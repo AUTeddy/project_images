@@ -1,0 +1,617 @@
+/* =========================================================
+   AUTEDDY PROFILE HUD (v3-matched, small)
+   - For itch user profile pages: .user_page_wrap
+   - Also works on game pages: #wrapper
+   - Uses v3 token values (colors/padding/spacing) + iso grid background
+   - Keeps your custom blocks only (.custom-auteddy, cards, gallery, tables)
+========================================================= */
+
+/* -----------------------------
+   v3 Tokens (scoped)
+------------------------------ */
+:is(#wrapper, .user_page_wrap){
+  /* core tokens (v3) */
+  --a-accent: var(--itchio_header_color, var(--itchio_link_color, #ce2352));
+  --a-accent2: var(--itchio_link_color, var(--a-accent));
+  --a-text: var(--itchio_text_color, rgba(255,255,255,.92));
+  --a-muted: rgba(255,255,255,.70);
+  --a-border: rgba(255,255,255,.10);
+  --a-surface: rgba(21,21,24,.72);
+
+  /* accent strengths (v3 fallback) */
+  --a-a10: rgba(206, 35, 82, 0.10);
+  --a-a14: rgba(206, 35, 82, 0.14);
+  --a-a18: rgba(206, 35, 82, 0.18);
+  --a-a28: rgba(206, 35, 82, 0.28);
+  --a-a38: rgba(206, 35, 82, 0.38);
+  --a-a55: rgba(206, 35, 82, 0.55);
+  --a-a70: rgba(206, 35, 82, 0.70);
+}
+
+/* v3 “auto-tint” when color-mix exists */
+@supports (color: color-mix(in srgb, #000, #fff)){
+  :is(#wrapper, .user_page_wrap){
+    --a-muted: color-mix(in srgb, var(--a-text) 72%, transparent);
+    --a-border: color-mix(in srgb, var(--a-text) 18%, transparent);
+
+    --a-a10: color-mix(in srgb, var(--a-accent) 14%, transparent);
+    --a-a14: color-mix(in srgb, var(--a-accent) 18%, transparent);
+    --a-a18: color-mix(in srgb, var(--a-accent) 22%, transparent);
+    --a-a28: color-mix(in srgb, var(--a-accent) 34%, transparent);
+    --a-a38: color-mix(in srgb, var(--a-accent) 46%, transparent);
+    --a-a55: color-mix(in srgb, var(--a-accent) 64%, transparent);
+    --a-a70: color-mix(in srgb, var(--a-accent) 82%, transparent);
+
+    --a-surface: color-mix(in srgb, var(--itchio_bg_color, #07060d) 86%, black);
+  }
+}
+
+/* -----------------------------
+   Background (v3 iso grid + glow)
+   NOTE: uses fixed pseudo-elements like your game page
+------------------------------ */
+:is(#wrapper, .user_page_wrap){
+  position: relative;
+  isolation: isolate;
+}
+
+:is(#wrapper, .user_page_wrap)::before{
+  content:'';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  opacity: 1;
+
+  /* use theme accent */
+  --bg-accent: var(--itchio_header_color);
+
+  /* Fallback if color-mix isn't supported */
+  --iso-strong: rgba(206, 35, 82, 0.16);
+  --iso-soft: rgba(206, 35, 82, 0.10);
+  --grid-vh: rgba(255, 255, 255, 0.05);
+
+  background-image:
+    /* horizontal lines */
+    repeating-linear-gradient(0deg, var(--grid-vh) 0 1px, transparent 0px 5px),
+    /* vertical lines */
+    repeating-linear-gradient(90deg, var(--grid-vh) 0 1px, transparent 0px 5px),
+    /* isometric diagonal A (30°) */
+    repeating-linear-gradient(30deg, var(--iso-soft) 0 1px, transparent 0px 50px),
+    /* isometric diagonal B (150°) */
+    repeating-linear-gradient(150deg, var(--iso-soft) 0 1px, transparent 0px 50px),
+    /* occasional thicker “major” isometric lines */
+    repeating-linear-gradient(30deg, var(--iso-strong) 0 1px, transparent 0px 100px),
+    repeating-linear-gradient(150deg, var(--iso-strong) 0 1px, transparent 0px 100px);
+
+  filter: blur(0px);
+  transform: translate3d(0, 0, 0);
+
+  animation: custom-iso-grid-drift 38s linear infinite;
+}
+
+:is(#wrapper, .user_page_wrap)::after{
+  content:'';
+  position: fixed;
+  inset: -40%;
+  z-index: 0;
+  pointer-events: none;
+
+  opacity: 0.14;
+
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      color-mix(in srgb, var(--itchio_header_color, #ce2352) 26%, transparent),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 80% 85%,
+      color-mix(in srgb, var(--itchio_header_color, #ce2352) 22%, transparent),
+      transparent 55%
+    ),
+    conic-gradient(
+      from 0deg,
+      transparent,
+      color-mix(in srgb, var(--itchio_header_color, #ce2352) 26%, transparent),
+      transparent
+    );
+
+  filter: blur(28px);
+  transform: translate3d(0, 0, 0);
+  animation: custom-bg-spin 26s linear infinite;
+}
+
+/* keep content above */
+:is(#wrapper, .user_page_wrap) > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* If browser supports color-mix, tint the grid by theme color */
+@supports (color: color-mix(in srgb, #000, #fff)) {
+  :is(#wrapper, .user_page_wrap)::before{
+    --grid-vh: color-mix(in srgb, #fff 6%, transparent);
+    --iso-soft: color-mix(in srgb, var(--itchio_header_color, #ce2352) 14%, transparent);
+    --iso-strong: color-mix(in srgb, var(--itchio_header_color, #ce2352) 22%, transparent);
+  }
+}
+
+@keyframes custom-iso-grid-drift{
+  0%   { transform: translate3d(0,0,0); }
+  50%  { transform: translate3d(-22px, 18px, 0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes custom-bg-spin{
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  :is(#wrapper, .user_page_wrap)::before,
+  :is(#wrapper, .user_page_wrap)::after{
+    animation: none !important;
+  }
+}
+
+/* -----------------------------
+   Base scope
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy{
+  color: var(--a-text);
+  line-height: 1.55;
+  letter-spacing: 0.1px;
+}
+
+/* -----------------------------
+   HUD surfaces + cards (v3 values)
+------------------------------ */
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-surface, .cus-hud-surface, blockquote.custom-callout){
+  background: rgba(21, 21, 24, 0.85);
+  border: 1px solid var(--a-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card{
+  background: rgba(21, 21, 24, 0.85);
+  border: 1px solid var(--a-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card-soft{
+  background: var(--a-surface);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* -----------------------------
+   Hero (v3 spacing)
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy-hero{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  margin: 10px 0 14px;
+}
+
+@media (max-width: 860px){
+  :is(#wrapper, .user_page_wrap) .custom-auteddy-hero{
+    grid-template-columns: 1fr;
+  }
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-title{
+  margin: 6px 0 6px;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-subtitle{
+  margin: 0 0 10px;
+  color: var(--a-muted);
+  font-size: 14.5px;
+}
+
+/* quick specs */
+:is(#wrapper, .user_page_wrap) .custom-auteddy-mini-label{
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-mini-list{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--a-muted);
+  font-size: 13px;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-mini-list strong{
+  color: var(--a-text);
+}
+
+/* -----------------------------
+   Pills (v3)
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy-pills{
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--a-border);
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 900;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* -----------------------------
+   HR + notes
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy-hr{
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 18px 0;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-note{
+  margin: 10px 0 0;
+  color: var(--a-muted);
+  font-size: 12.5px;
+}
+
+/* -----------------------------
+   Gallery (v3)
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy-gallery{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 980px){
+  :is(#wrapper, .user_page_wrap) .custom-auteddy-gallery{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-media{
+  border-radius: 16px;
+  border: 1px solid var(--a-border);
+  background:
+    radial-gradient(circle at 30% 0%, rgba(250, 92, 92, 0.14), transparent 48%),
+    rgba(255, 255, 255, 0.03);
+  padding: 10px;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-media:hover{
+  transform: translateY(-2px);
+  border-color: rgba(250, 92, 92, 0.38);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-caption{
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--a-muted);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* -----------------------------
+   Lists (v3)
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy-list{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--a-muted);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-list strong{
+  color: var(--a-text);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy-list-nested ul{
+  margin-top: 8px;
+  padding-left: 18px;
+}
+
+/* -----------------------------
+   Tables (v3)
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 13.5px;
+  border: none !important;
+  margin: 0;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy th,
+:is(#wrapper, .user_page_wrap) .custom-auteddy td{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--a-border);
+  text-align: left;
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy thead th{
+  font-weight: 950;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  color: rgba(255,255,255,.86);
+  border-bottom: 1px solid color-mix(in srgb, var(--a-border) 70%, transparent);
+}
+
+:is(#wrapper, .user_page_wrap) .custom-auteddy tbody tr:hover{
+  background: rgba(255,255,255,.03);
+}
+
+/* -----------------------------
+   Tree list (v3-ish)
+------------------------------ */
+.custom-tree{
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.custom-tree,
+.custom-tree :where(ul, li){
+  position: relative;
+}
+
+.custom-tree ul{
+  padding-left: 1.6em;
+  margin: .35em 0 .35em;
+}
+
+.custom-tree li{
+  list-style: none;
+  padding: .25em 0 .25em .2em;
+  color: rgba(255,255,255,.88);
+}
+
+.custom-tree :where(.custom-tree-dashed, .custom-tree-dotted) > li::before{
+  content:"";
+  position:absolute;
+  left:-1.05em;
+  top:.95em;
+  width:.75em;
+  border-top: 1px solid rgba(255,255,255,.22);
+}
+
+.custom-tree-dashed > li::after{
+  content:"";
+  position:absolute;
+  left:-1.05em;
+  top:.35em;
+  bottom:.4em;
+  border-left: 1px dashed rgba(255,255,255,.24);
+}
+
+.custom-tree-dotted > li::after{
+  content:"";
+  position:absolute;
+  left:-1.05em;
+  top:.35em;
+  bottom:.4em;
+  border-left: 1px dotted rgba(255,255,255,.24);
+}
+
+/* -----------------------------
+   WIP ribbon (portable)
+------------------------------ */
+.custom-indev{
+  --col: var(--a-accent2);
+  --bg: color-mix(in srgb, var(--itchio_bg_color, #07060d) 80%, black);
+
+  display:flex;
+  background-image: repeating-linear-gradient(-45deg, var(--bg), var(--bg) 2rem, var(--col) 2rem, var(--col) 3.5rem);
+  background-size: 200% 200%;
+  border-radius: .5em;
+  font-size: .75em;
+  font-weight: bolder;
+  letter-spacing: .2em;
+  overflow: hidden;
+  animation: 30s linear infinite custom-indev-anim;
+}
+
+.custom-indev > div{
+  padding: .2em 3em;
+  margin-left: 2em;
+  background: color-mix(in srgb, var(--bg) 65%, black);
+  color: rgba(255,255,255,.92);
+}
+
+@keyframes custom-indev-anim{
+  100% { background-position: 100% 100%; }
+}
+
+
+/* -----------------------------
+   Futuristic H3 (reusable)
+   Use: <h3 class="custom-auteddy-h3"><strong>ASSET INFO</strong></h3>
+------------------------------ */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3){
+  position: relative;
+  margin: 24px 0 12px;
+  padding: 14px 14px 12px;
+  border-radius: 16px;
+  overflow: hidden;
+
+  border: 1px solid var(--a-border);
+  background-color: rgba(12, 12, 14, 0.55);
+
+  /* crisp scanlines + subtle grid */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 6px),
+    repeating-linear-gradient(90deg, var(--a-a10) 0px, var(--a-a10) 1px, transparent 1px, transparent 18px);
+}
+
+/* sharp sci-fi shape (cut corners) */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3){
+  clip-path: polygon(
+    12px 0%,
+    calc(100% - 18px) 0%,
+    100% 18px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    18px 100%,
+    0% calc(100% - 18px),
+    0% 12px
+  );
+}
+
+/* animated neon “energy” layer */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3)::before{
+  content:'';
+  position:absolute;
+  inset:-60px;
+  z-index:0;
+  pointer-events:none;
+
+  background: conic-gradient(
+    from 0deg,
+    var(--a-a38),
+    var(--a-a18),
+    rgba(255,255,255,0.06),
+    var(--a-a28),
+    var(--a-a38)
+  );
+
+  filter: blur(18px);
+  opacity: 0.9;
+  transform: translate3d(0,0,0);
+  animation: custom-auteddy-h3-energy 10s linear infinite;
+}
+
+/* underline scanline */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3)::after{
+  content:'';
+  display:block;
+  margin-top:10px;
+  height:2px;
+  border-radius:999px;
+  background: linear-gradient(
+    90deg,
+    var(--a-a55),
+    var(--a-a18) 35%,
+    var(--a-a55) 70%,
+    var(--a-a14)
+  );
+  box-shadow: 0 0 18px var(--a-a10);
+}
+
+/* keep text above energy */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3) > strong{
+  position: relative;
+  z-index: 1;
+
+  display: inline-block;
+  padding: 11px 40px 10px 40px;
+
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  line-height: 1;
+  color: rgba(255,255,255,0.94);
+
+  clip-path: polygon(
+    10px 0%,
+    calc(100% - 18px) 0%,
+    100% 18px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    18px 100%,
+    0% calc(100% - 18px),
+    0% 10px
+  );
+
+  border: 1px solid var(--a-a55);
+  background-color: rgba(14,14,16,0.78);
+
+  /* circuitry SVG + sheen */
+  background-image:
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='320'%20height='64'%20viewBox='0%200%20320%2064'%3E%0A%3Cg%20fill='none'%20stroke='%23FFFFFF'%20stroke-opacity='.18'%20stroke-width='1'%3E%0A%3Cpath%20d='M14%2018h48m18%200h26m20%200h48m18%200h26m20%200h48'/%3E%0A%3Cpath%20d='M26%2046h40m24%200h34m18%200h40m24%200h34m18%200h40'/%3E%0A%3Cpath%20d='M62%2018v12h14m44%2016v-10h-16m98-18v12h14m44%2016v-10h-16'/%3E%0A%3C/g%3E%0A%3Cg%20fill='%23FFFFFF'%20fill-opacity='.12'%3E%0A%3Ccircle%20cx='14'%20cy='18'%20r='2'/%3E%3Ccircle%20cx='80'%20cy='18'%20r='2'/%3E%0A%3Ccircle%20cx='26'%20cy='46'%20r='2'/%3E%3Ccircle%20cx='120'%20cy='46'%20r='2'/%3E%0A%3Ccircle%20cx='202'%20cy='18'%20r='2'/%3E%3Ccircle%20cx='268'%20cy='18'%20r='2'/%3E%0A%3Ccircle%20cx='214'%20cy='46'%20r='2'/%3E%3Ccircle%20cx='308'%20cy='46'%20r='2'/%3E%0A%3C/g%3E%3C/svg%3E"),
+    linear-gradient(90deg, var(--a-a28), rgba(255,255,255,0.04));
+  background-size: 320px 64px, 100% 100%;
+  background-position: left center, center;
+  background-repeat: repeat, no-repeat;
+
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 0 22px var(--a-a10);
+}
+
+/* left power bar */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3) > strong::before{
+  content:'';
+  position:absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 16px;
+  border-radius: 3px;
+
+  background: linear-gradient(180deg, var(--a-accent), var(--a-a18));
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.35) inset,
+    0 0 18px var(--a-a55);
+}
+
+/* tiny top-right notch */
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3) > strong::after{
+  content:'';
+  position:absolute;
+  right: 8px;
+  top: 7px;
+  width: 22px;
+  height: 10px;
+  border-top: 1px solid var(--a-a55);
+  border-right: 1px solid var(--a-a55);
+  opacity: 0.9;
+  transform: skewX(-18deg);
+}
+
+@keyframes custom-auteddy-h3-energy{
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  :is(#wrapper, .user_page_wrap) .custom-auteddy :is(h3, .custom-auteddy-h3)::before{
+    animation: none !important;
+  }
+}
