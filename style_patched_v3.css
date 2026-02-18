@@ -1,0 +1,2477 @@
+/* =========================================================
+   style.css (patched)
+   - pitch.css utilities + Auteddy pack styles
+========================================================= */
+
+/* .game_comments_widget .avatar_container[href='https://auteddy.itch.io/'] + .post_header > .post_author::after {
+	content: 'DEVELOPER';
+} */
+
+#wrapper,
+.wrapper {
+	--itchio_font_family: Roboto;
+	--itchio_bg_color: #07060d;
+	--itchio_bg2_color: #07060d;
+	--itchio_bg2_sub: #e5e5e5;
+	--itchio_text_color: #b5f5ff;
+	--itchio_header_color: #23bace;
+	--itchio_link_color: #e53b44;
+	--itchio_border_color: #d8d8d8;
+	--itchio_button_color: #e53b44;
+	--itchio_button_fg_color: #ffffff;
+	--itchio_button_shadow_color: #fa5059;
+	background-color: var(--itchio_bg_color);
+
+	--a-accent: var(--itchio_header_color, var(--itchio_link_color));
+	--a-accent2: var(--itchio_link_color, var(--a-accent));
+	--a-text: var(--itchio_text_color, rgba(255, 255, 255, 0.92));
+	--a-muted: rgba(255, 255, 255, 0.7);
+	--a-border: rgba(255, 255, 255, 0.1);
+	--a-surface: rgba(21, 21, 24, 0.72);
+
+	/* accent strengths (fallback; auto improved with color-mix below) */
+	--a-a10: rgba(206, 35, 82, 0.1);
+	--a-a14: rgba(206, 35, 82, 0.14);
+	--a-a18: rgba(206, 35, 82, 0.18);
+	--a-a28: rgba(206, 35, 82, 0.28);
+	--a-a38: rgba(206, 35, 82, 0.38);
+	--a-a55: rgba(206, 35, 82, 0.55);
+	--a-a70: rgba(206, 35, 82, 0.7);
+
+	--t: var(--itchio_text_color);
+	--btn_s: var(--itchio_button_shadow_color);
+	--btn: var(--itchio_button_color);
+	--btn_f: var(--itchio_button_fg_color);
+	--b2s: var(--itchio_bg2_sub);
+	--b2: var(--itchio_bg2_color);
+	--b: var(--itchio_bg_color);
+	--l: var(--itchio_link_color);
+	--br: var(--itchio_border_color);
+	--loading_bar: var(--itchio_header_color);
+	--loading_bar2: var(--itchio_link_color);
+	--loading_bar_text: #000000a4;
+
+	--hud-accent: var(--a-accent);
+	--hud-border: var(--itchio_header_color);
+	--hud-bg: rgba(0, 0, 0, 0.45);
+	--hud-text: var(--itchio_header_color);
+
+	/*Request*/
+
+	--hud-request-border: rgb(0, 128, 255);
+	--hud-request-bg: rgba(0, 128, 255, 0.369);
+	--hud-request-text: rgba(255, 255, 255, 0.9);
+
+	--hud-power-request-accent_bg_1: rgb(0, 128, 255);
+	--hud-power-request-accent_bg_2: rgba(0, 0, 0, 0);
+
+	--hud-request-glow_line_1: rgba(109, 182, 255, 0.209);
+	--hud-request-glow_line_2: rgba(0, 106, 255, 0.436);
+
+	--hud-request-gird1: rgba(0, 128, 255, 0.382);
+	--hud-request-gird2: rgba(0, 128, 255, 0.341);
+
+	--hud-power-request-accent_1: rgba(0, 157, 255, 0.987);
+	--hud-power-request-accent_2: rgb(0, 128, 255);
+
+	/**Licence**/
+
+	--hud-licence-border: rgb(2, 255, 87);
+	--hud-licence-bg: rgba(2, 255, 86, 0.185);
+	--hud-licence-text: rgb(158, 255, 190);
+	--hud-licence-link: rgb(0, 187, 255);
+
+	--hud-powelinkcence-accent_bg_1: rgb(2, 255, 87);
+	--hud-power-licence-accent_bg_2: rgba(0, 0, 0, 0);
+
+	--hud-licence-glow_line_1: rgba(2, 255, 86, 0.186);
+	--hud-licence-glow_line_2: rgba(44, 255, 195, 0.187);
+
+	--hud-licence-gird1: rgba(145, 255, 182, 0.333);
+	--hud-licence-gird2: rgba(255, 0, 0, 0.241);
+
+	--hud-power-licence-accent_1: rgb(0, 97, 32);
+	--hud-power-licence-accent_2: rgb(2, 255, 87);
+
+	/** gallery column presets **/
+
+	--gallery-columns-1: repeat(1, 1fr);
+	--gallery-columns-2: repeat(2, 1fr);
+	--gallery-columns-3: repeat(3, 1fr);
+	--gallery-columns-4: repeat(4, 1fr);
+}
+
+#wrapper .inner_column {
+	background-color: transparent !important;
+}
+
+/** comms **/
+
+.custom-comms-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.custom-comms-btn .custom-lb {
+	flex-grow: 1;
+}
+
+.custom-comms-sect {
+	display: grid;
+	grid-template-columns: 35% 65%;
+	margin: 1em 0;
+}
+
+.custom-comms-desc {
+	text-wrap: balance;
+	margin: 0;
+	margin-left: 0;
+	padding-right: 1.5em;
+}
+
+.custom-comms-desc pre {
+	margin-bottom: 0.5em;
+}
+
+.custom-comms-desc code {
+	padding: 0.1em 0.5em;
+	background: var(--br);
+	border-radius: 6px;
+}
+
+.custom-comms-disc {
+	font-size: 0.8em;
+}
+
+.custom-comms-gall {
+	column-count: 3;
+	column-rule: 2px dashed var(--br);
+	column-gap: 1.25em;
+}
+
+.custom-comms-gall a {
+	display: block;
+	box-shadow: 0 -1em 1em #0c0b0f90;
+}
+
+.custom-comms-gall img {
+	--l: linear-gradient(180deg, #fff 65%, #0000);
+	-webkit-mask-image: var(--l);
+	mask: alpha var(--l);
+	border-radius: 12px;
+}
+
+@media (max-width: 765px) {
+	.custom-comms-sect {
+		grid-template-columns: 100%;
+		grid-gap: 1em;
+	}
+}
+
+@font-face {
+	font-family: 'Flow Rounded';
+	font-style: normal;
+	font-display: block;
+	font-weight: 400;
+	src: url(https://cdn.jsdelivr.net/fontsource/fonts/flow-rounded@latest/latin-400-normal.woff2) format('woff2');
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+		U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body:not(:has(.game_page_apperance_columns)) #user_tools:not(:has(.is_following)) ~ #wrapper .custom-foll-disc {
+	font-family: 'Flow Rounded' !important;
+	pointer-events: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.custom-foll-disc {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	white-space: nowrap;
+}
+
+.custom-comms-btn {
+	gap: 0;
+}
+
+.custom-comms-btn > :last-child {
+	transform: rotate(-90deg);
+	font-size: 1.4em;
+}
+
+.custom-comms-btn > :last-child > strong {
+	margin-left: 0.5em;
+}
+
+.custom-comms-btn > a {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	overflow: hidden;
+}
+
+.custom-comms-btn > a > div {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	padding: 0.5em 0.5em;
+}
+
+.custom-comms-btn > a > :first-child {
+	border-bottom: 3px dashed var(--b2);
+}
+
+.custom-lb {
+	background: var(--btn);
+	color: var(--btn_f);
+	text-decoration: none;
+	padding: 0.2ch 1ch;
+	margin: 0.15em;
+	font-weight: 700;
+	border-radius: 4px;
+	line-height: 1em;
+	display: inline-block;
+}
+
+.custom-lb > img {
+	max-height: 1.25em;
+	vertical-align: -0.4em;
+	padding: 0.2em 0.3em;
+}
+
+small.custom-lb {
+	font-size: 0.6em;
+}
+
+a.custom-lb {
+	color: var(--btn_f);
+}
+
+.custom-comm-slots {
+	padding: 0.5em 1em 0.3em !important;
+	font-size: 1.1em;
+	font-weight: normal;
+	font-family: monospace;
+	gap: 0 !important;
+	background: #262334;
+}
+
+.custom-comm-slots > span {
+	font-size: 0.7em;
+	margin-bottom: 0.1em;
+}
+
+.custom-comm-slots > img {
+	height: 1em;
+}
+
+/**eof comms**/
+
+.custom-accrd {
+	--accrd-opn: '▼';
+	--accrd-cls: '►';
+}
+.custom-read-more {
+	--read-more-cls: 'Read more...';
+	--read-more-opn: 'Read less...';
+}
+.custom-accrd {
+	--br-accrd: var(--accordion-border-col, var(--br));
+	max-width: var(--accordion-width, 100%);
+	border: 1px solid var(--br-accrd);
+	border-radius: 3px;
+}
+.custom-accrd details,
+.custom-accrd > * {
+	padding: 0.75em 1.2em;
+	margin: 0;
+}
+.custom-accrd > details[open] summary {
+	margin-bottom: 0.25em;
+	color: var(--itchio_header_color, var(--l));
+	background-color: color-mix(in srgb, var(--itchio_button_color) 0%, rgba(255, 255, 255, 0));
+}
+.custom-accrd > details[open] summary:after {
+	content: var(--accrd-opn, '▼');
+}
+.custom-accrd > details:not(:last-child) {
+	border-bottom: 1px solid var(--br-accrd);
+}
+.custom-accrd > details:first-of-type:not(:first-child) {
+	border-top: 1px solid var(--br-accrd);
+}
+.custom-accrd > details:last-of-type:not(:last-child) {
+	border-bottom: 1px solid var(--br-accrd);
+}
+.custom-accrd summary {
+	font-size: 0.9em;
+	font-weight: bold;
+	cursor: pointer;
+	display: flex;
+	text-decoration: none;
+	color: var(--itchio_link_color, var(--l));
+	background-color: color-mix(in srgb, var(--itchio_button_color) 0%, rgba(255, 255, 255, 0));
+	padding: 10px;
+}
+.custom-accrd summary:not(:hover) {
+	text-decoration: none;
+}
+.custom-accrd summary::after {
+	text-align: right;
+	flex-grow: 1;
+	content: var(--accrd-cls, '►');
+}
+.custom-accrd summary::-webkit-details-marker {
+	display: none;
+}
+.custom-accrd.custom-left {
+	margin-left: 0;
+}
+.custom-accrd.custom-right {
+	margin-right: 0;
+}
+.custom-accrd.custom-full-w {
+	max-width: 100%;
+}
+blockquote.custom-callout {
+	font-style: normal;
+	border: 1px solid var(--br);
+	border-left: 5px solid var(--l);
+	padding: 0.05em 1em 1em;
+	background: var(--b2);
+	border-radius: 4px;
+}
+blockquote.custom-callout > :first-child {
+	color: var(--l);
+}
+blockquote.custom-callout > :first-child > img {
+	vertical-align: middle;
+	max-height: 1em;
+}
+.custom-code {
+	position: relative;
+	padding: 0.5em;
+	background: var(--b2s);
+	font-size: 14px;
+	word-wrap: normal;
+	white-space: pre-wrap;
+	overflow: auto;
+	border-radius: 3px;
+	counter-reset: ln;
+}
+.custom-code > code {
+	position: relative;
+	display: block;
+	padding-left: 3em;
+}
+.custom-code > code::after {
+	counter-increment: ln;
+	content: counter(ln);
+	position: absolute;
+	display: inline-block;
+	left: 0;
+	top: 0;
+	width: 2em;
+	padding-right: 0.5em;
+	text-align: right;
+	font-family: monospace;
+	opacity: 0.6;
+	border-right: 2px solid var(--br);
+}
+.custom-hl::before {
+	content: '-';
+	position: absolute;
+	left: -0.5em;
+	width: 100%;
+	padding-left: 1em;
+	color: transparent;
+	background: var(--l);
+	opacity: 0.25;
+}
+:is(.custom-dot-leader-item, ul.custom-dot-leader > li).custom-no-dot > :last-child::before {
+	border-bottom: none !important;
+}
+.custom-dot-leader-item,
+ul.custom-dot-leader {
+	list-style: none;
+	max-width: 100%;
+	padding: 0;
+}
+:where(
+	.custom-dot-leader-item,
+	ul.custom-dot-leader > li:not(:has(.custom-dot-leader)):has(> :nth-child(2):last-child)
+) {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+}
+:where(.custom-dot-leader-item, ul.custom-dot-leader > li:not(:has(.custom-dot-leader)):has(> :nth-child(2):last-child))
+	> :last-child {
+	display: flex;
+	flex-grow: 1;
+}
+:where(.custom-dot-leader-item, ul.custom-dot-leader > li:not(:has(.custom-dot-leader)):has(> :nth-child(2):last-child))
+	> :last-child::before {
+	content: '';
+	flex-grow: 1;
+	height: 1em;
+	margin: 0 0.3em;
+	border-bottom: 0.2em dotted currentColor;
+	opacity: 0.8;
+}
+.custom-img-compare {
+	position: relative;
+	width: fit-content;
+	padding-bottom: 1em;
+	margin: auto;
+}
+.custom-img-compare img {
+	display: block;
+	height: 100%;
+	max-width: unset;
+}
+.custom-img-compare > img {
+	max-width: 100%;
+}
+.custom-img-compare > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	max-width: 100%;
+	width: 50%;
+	padding-bottom: 1em;
+	overflow: hidden;
+	resize: horizontal;
+}
+.custom-img-compare > div::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: calc(100% - 0.2rem);
+	border-right: 2px solid var(--l);
+}
+.custom-img-compare > div::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: calc(-0.5em + 1px);
+	background: var(--l);
+	height: 0.8rem;
+	width: 1.25rem;
+	clip-path: circle(50%);
+}
+dl.custom-info {
+	display: grid;
+	grid-template-columns: auto auto;
+}
+dl.custom-info > * {
+	margin: 0.2em 8px;
+}
+dl.custom-info > dt {
+	text-align: right;
+	font-weight: 700;
+}
+dl.custom-info.custom-left {
+	grid-template-columns: min-content auto;
+}
+dl.custom-info.custom-right {
+	grid-template-columns: auto min-content;
+}
+#wrapper kbd {
+	font-size: 0.8em;
+	background: var(--br);
+	border-radius: 5px;
+	border-bottom: 3px solid var(--b2s);
+	padding: 0.1ch 0.8ch;
+}
+.custom-lb {
+	background: var(--btn);
+	color: var(--btn_f);
+	text-decoration: none;
+	padding: 0.2ch 1ch;
+	margin: 0.15em;
+	font-weight: 700;
+	border-radius: 4px;
+	line-height: 1em;
+	display: inline-block;
+}
+.custom-lb > img {
+	height: 1em;
+	vertical-align: bottom;
+}
+small.custom-lb {
+	font-size: 0.6em;
+}
+a.custom-lb {
+	color: var(--btn_f);
+}
+.custom-grouped-lb {
+	white-space: nowrap;
+}
+.custom-grouped-lb > .custom-lb {
+	border-radius: 0;
+	margin: 0;
+}
+.custom-grouped-lb > .custom-lb:first-child {
+	border-radius: 12px 0 0 12px;
+}
+.custom-grouped-lb > .custom-lb:last-child {
+	border-radius: 0 12px 12px 0;
+}
+.custom-grouped-lb > .custom-lb:not(:last-child) {
+	margin-right: 0.1em;
+}
+.custom-read-more:has(> details:not([open])) > .custom-content {
+	max-height: 5.5em;
+	--mask: linear-gradient(to bottom, black 50%, transparent);
+	-webkit-mask-image: var(--mask);
+	mask-image: var(--mask);
+}
+.custom-read-more:has(> details[open]) > .custom-content {
+	max-height: unset !important;
+}
+.custom-read-more > details > summary {
+	display: flex;
+	width: min-content;
+	margin-top: 0.5em;
+	white-space: nowrap;
+	color: var(--l);
+	text-decoration: 1px underline;
+	cursor: pointer;
+}
+.custom-read-more > details > summary::-webkit-details-marker {
+	display: none;
+}
+.custom-read-more > details > summary::after {
+	content: var(--read-more-cls, 'Read more...');
+}
+.custom-read-more > details[open] > summary::after {
+	content: var(--read-more-opn, 'Read less...');
+}
+.custom-read-more > .custom-tl-list + details > summary {
+	padding-left: 1em;
+}
+.custom-read-more.custom-center > details > summary {
+	margin-left: auto;
+	margin-right: auto;
+}
+.custom-read-more.custom-right > details > summary {
+	margin-left: auto;
+}
+.custom-read-more.custom-once > details[open] {
+	display: none;
+}
+.custom-speed-dial {
+	display: flex;
+	position: fixed !important;
+	bottom: 1em;
+	right: 1em;
+	flex-direction: column;
+	align-items: center;
+	width: fit-content;
+}
+.custom-speed-dial > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0.5em;
+}
+.custom-speed-dial-btn:hover img {
+	box-shadow: none !important;
+}
+.custom-speed-dial-btn:hover::after {
+	display: none;
+}
+.custom-speed-dial * {
+	box-sizing: content-box;
+}
+.custom-speed-dial-btn,
+.custom-speed-dial > details > summary {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	width: 1.3em;
+	height: 1.3em;
+	padding: 0.5em;
+	margin: 0.5em auto;
+	background: var(--btn);
+	border-radius: 50%;
+	box-shadow: 0 0 1.5em -0.5em var(--btn_s);
+	transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.custom-speed-dial-btn:hover,
+.custom-speed-dial > details > summary:hover {
+	transform: scale(1.15);
+}
+.custom-speed-dial-btn:hover > .custom-tip-content.custom-left {
+	transform: translate(-100%, 50%) scale(0.85);
+}
+.custom-speed-dial > details img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.5s;
+}
+.custom-speed-dial > details > summary {
+	position: relative;
+	width: 2em;
+	height: 2em;
+	display: flex;
+	cursor: pointer;
+	margin: 0;
+	padding: 0.5em;
+}
+.custom-speed-dial > details > summary::-webkit-details-marker {
+	display: none;
+}
+.custom-speed-dial:has(> details[open]) > .custom-tip-content {
+	opacity: 1;
+	transform: translate(calc(-100% - 0.5em), 50%);
+}
+.custom-speed-dial > details:not([open]) img:nth-of-type(2),
+.custom-speed-dial > details[open] img:first-of-type {
+	opacity: 0;
+	transform: translate(-50%, calc(-50% - 0.5em));
+}
+.custom-speed-dial:has(> details:not([open])) .custom-speed-dial-content li {
+	opacity: 0;
+	transform: translateY(0.5em);
+}
+.custom-speed-dial:has(> details:not([open])) .custom-speed-dial-content {
+	pointer-events: none;
+	max-height: 0;
+	transition: max-height 1.4s;
+}
+.custom-speed-dial > .custom-tip-content.custom-left {
+	bottom: 1.5em !important;
+}
+.custom-speed-dial-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-height: 100vh;
+}
+.custom-speed-dial-content li {
+	transition: 0.5s ease var(--d, 0s);
+}
+.custom-speed-dial-content > li:nth-last-child(2) {
+	--d: 0.2s;
+}
+.custom-speed-dial-content > li:nth-last-child(3) {
+	--d: 0.4s;
+}
+.custom-speed-dial-content > li:nth-last-child(4) {
+	--d: 0.6s;
+}
+.custom-speed-dial-content > li:nth-last-child(5) {
+	--d: 0.8s;
+}
+.custom-speed-dial-content > li:nth-last-child(6) {
+	--d: 1s;
+}
+@media (max-width: 650px) {
+	.custom-speed-dial {
+		bottom: calc(50px + 1em);
+	}
+}
+.custom-hd-click {
+	display: inline-block;
+	height: 1em;
+}
+.custom-hd-click > details,
+.custom-hd-click > details > summary {
+	display: flex;
+}
+.custom-hd-click > details > summary::selection {
+	color: var(--t);
+	background: var(--t);
+}
+.custom-hd-click > details > summary::-webkit-details-marker {
+	display: none;
+}
+.custom-hd-click > details:not([open]) > summary {
+	color: transparent;
+	background: var(--t);
+	cursor: pointer;
+}
+.custom-hd-click > details[open] > summary {
+	background: rgba(0, 0, 0, 0);
+	transition: background 0.5s;
+}
+.custom-hd:not(:hover) {
+	color: transparent;
+	background: var(--t);
+}
+.custom-hd::selection {
+	color: var(--t);
+	background: var(--t);
+}
+#wrapper :not(.game_info_panel_widget) > table {
+	width: 100%;
+	border-color: var(--br);
+}
+#wrapper :not(.game_info_panel_widget) > table td,
+#wrapper :not(.game_info_panel_widget) > table th {
+	border: none !important;
+	border-bottom: 1px solid var(--br) !important;
+	padding: 1em 1em !important;
+}
+#wrapper :not(.game_info_panel_widget) > table th {
+	background: var(--b2s);
+}
+.custom-tl-list {
+	display: grid;
+	grid-template-columns: 8.25em 1fr;
+	padding-left: 1em;
+}
+.custom-tl-list > dd,
+.custom-tl-list > dt {
+	margin: 0.25em 0;
+	padding: 0 0.5em;
+}
+.custom-tl-list > dt {
+	position: relative;
+	grid-column: 1;
+	width: fit-content;
+	max-height: 1.25em;
+	font-weight: 700;
+	background: var(--t);
+	color: var(--b2);
+	border-radius: 4px;
+}
+.custom-tl-list > dt > small {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	margin-top: 0.5em;
+	color: var(--t);
+	font-size: 0.85em;
+	font-weight: 400;
+	white-space: nowrap;
+	opacity: 0.8;
+}
+.custom-tl-list > dt:not(:first-child),
+.custom-tl-list > dt:not(:first-child) + dd {
+	margin-top: 1.5em;
+}
+.custom-tl-list > dd {
+	position: relative;
+	grid-column: 2;
+	margin-left: 1em;
+}
+.custom-tl-list > dd::after,
+.custom-tl-list > dd::before {
+	content: '';
+	position: absolute;
+	left: -1.25em;
+}
+.custom-tl-list > dd::before {
+	top: 0.5em;
+	height: 100%;
+	padding: 1em 0;
+	border-left: 1px dashed var(--l);
+	transform: translate(-50%, 0);
+}
+.custom-tl-list > dd::after {
+	top: 50%;
+	height: 0.5em;
+	width: 0.5em;
+	background: var(--l);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+.custom-tl-list > dd > .custom-lb {
+	padding: 0 0.7ch !important;
+	outline: 0.35ch solid var(--btn);
+}
+.custom-toggles {
+	display: inline-flex;
+	background: var(--b2);
+	border: 1px solid var(--b2s, currentColor);
+	border-radius: 24px;
+}
+.custom-toggle {
+	padding: 0.1em 0.8em;
+	margin: 2px;
+	border-radius: inherit;
+	transition: 0.3s;
+}
+.custom-toggle:not(:hover) {
+	text-decoration: none;
+}
+[class^='custom-content-'] {
+	display: none;
+}
+:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-a']) .custom-content-a,
+:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-b']) .custom-content-b,
+:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-c']) .custom-content-c,
+:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-d']) .custom-content-d,
+:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-e']) .custom-content-e,
+:is(#wrapper, .primary_column):not(:has(a.custom-toggle:target)) .custom-content-a {
+	display: block;
+}
+.custom-toggles:not(:has(a.custom-toggle:target)) a.custom-toggle[name='toggle-a'],
+.custom-toggles > a.custom-toggle:target {
+	color: var(--btn_f) !important;
+	background: var(--btn);
+}
+.custom-tip {
+	position: relative;
+}
+.custom-tip:has(> img) {
+	display: inline-block;
+}
+.custom-tip:has(> img) > img {
+	position: relative;
+}
+.custom-tip > .custom-tip-content {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	height: fit-content;
+	padding: 0.2em 0.5em;
+	color: var(--t);
+	background: var(--b2);
+	border: 1px solid var(--br);
+	border-radius: 6px;
+	pointer-events: none;
+	white-space: nowrap;
+	z-index: 99;
+	transition: 0.25s;
+	opacity: 0;
+	transform: translate(-50%, 100%);
+}
+.custom-tip > .custom-tip-content.custom-top {
+	bottom: 100%;
+	transform: translate(-50%, 0);
+}
+.custom-tip > .custom-tip-content.custom-left {
+	left: 0;
+	bottom: 50%;
+	transform: translate(-100%, 50%);
+}
+.custom-tip > .custom-tip-content.custom-right {
+	left: 100%;
+	bottom: 50%;
+	transform: translate(0, 50%);
+}
+.custom-tip:hover > .custom-tip-content {
+	opacity: 1;
+	transform: translate(-50%, calc(100% + 0.5em));
+}
+.custom-tip:hover > .custom-tip-content.custom-top {
+	transform: translate(-50%, -0.5em);
+}
+.custom-tip:hover > .custom-tip-content.custom-left {
+	transform: translate(calc(-100% - 0.5em), 50%);
+}
+.custom-tip:hover > .custom-tip-content.custom-right {
+	transform: translate(0.5em, 50%);
+}
+abbr.custom-tip {
+	text-decoration: 2px underline dotted var(--l);
+}
+
+.custom-tree {
+	background-color: rgba(0, 0, 0, 0.65);
+	padding: 15px;
+}
+
+.custom-tree,
+.custom-tree :where(ul, li) {
+	position: relative;
+}
+.custom-tree,
+.custom-tree ul {
+	line-height: 1.5em;
+	list-style: none;
+	padding-left: var(--tree-list-indent, 1em);
+}
+.custom-tree ul.custom-tree-dotted,
+.custom-tree.custom-tree-dotted {
+	--tree-b-style: dotted;
+}
+.custom-tree ul.custom-tree-dashed,
+.custom-tree.custom-tree-dashed {
+	--tree-b-style: dashed;
+}
+ul.custom-dot-leader.custom-tree {
+	padding-left: 1em;
+}
+.custom-tree li > :where(h1, h2, h3, h4, h5, h6) {
+	padding-bottom: 0.3lh;
+	margin: 0;
+}
+.custom-tree li:last-child::after {
+	height: 0.5lh;
+}
+.custom-tree li::after,
+.custom-tree li::before {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	left: -1em;
+	border-top: 0.0625em var(--tree-b-style, solid);
+	border-color: var(--tree-outline-color, currentColor) !important;
+	width: 0.6em;
+	height: 0;
+	top: 0.5lh;
+}
+.custom-tree li::after {
+	border-left: 0.0625em var(--tree-b-style, solid);
+	width: 0;
+	height: 100%;
+	top: 0.05lh;
+}
+
+/* custom-indev: if color-mix() exists, blend bg from site background */
+@supports (color: color-mix(in srgb, #000, #fff)) {
+	.custom-indev {
+		--bg: color-mix(in srgb, var(--b) 80%, black);
+	}
+}
+
+.custom-indev {
+	--col: var(--loading_bar2, var(--l));
+	--bg: var(--loading_bar);
+	display: flex;
+	background-image: repeating-linear-gradient(-45deg, var(--bg), var(--bg) 2rem, var(--col) 2rem, var(--col) 3.5rem);
+	background-size: 200% 200%;
+	border-radius: 0.5em;
+	font-size: 0.75em;
+	font-weight: bolder;
+	letter-spacing: 0.2em;
+	overflow: hidden;
+	animation: 30s linear infinite indev-anim;
+}
+.custom-indev > div {
+	padding: 0.2em 3em;
+	margin-left: 2em;
+	background: var(--loading_bar_text);
+	color: rgba(255, 255, 255, 0.92);
+}
+@keyframes indev-anim {
+	100% {
+		background-position: 100% 100%;
+	}
+}
+.columns {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	margin: 0;
+}
+.columns .left_col {
+	width: 100%;
+	-webkit-order: 2;
+	order: 2;
+}
+.columns .right_col {
+	width: 100%;
+	-webkit-order: 1;
+	order: 1;
+}
+
+.header {
+	margin-top: 25px;
+}
+
+.view_game_page {
+	margin-top: 15px;
+	background-color: var(--itchio_bg_color);
+	border-left: 2px solid var(--itchio_header_color) !important;
+	border-right: 2px solid var(--itchio_header_color) !important;
+	border-image: linear-gradient(
+			to bottom,
+			var(--itchio_header_color) 70%,
+			var(--hud-request-border) 80%,
+			var(--hud-licence-border) 100%
+		)
+		1 !important;
+}
+
+.view_game_page .header_buy_row {
+	display: none;
+}
+.screenshot_list {
+	column-count: 3;
+	column-gap: 0;
+	margin: 0 20px !important;
+}
+.screenshot_list > a {
+	display: block;
+	padding: 0.3em;
+}
+.view_game_page .screenshot_list img {
+	display: block !important;
+	height: auto !important;
+	max-width: 100%;
+	margin: 0;
+}
+@media (max-width: 1000px) {
+	.screenshot_list {
+		column-count: 2;
+	}
+}
+
+/* =========================================================
+   AUTEDDY PACK + HUD HEADLINES
+   - Uses itchio theme vars: --itchio_header_color, --itchio_link_color, etc.
+   - Utility headline class: .custom-hud-h
+   - Apply by adding class to headings
+========================================================= */
+
+/* Theme-driven variables */
+
+@supports (color: color-mix(in srgb, #000, #fff)) {
+	#wrapper {
+		--a-muted: color-mix(in srgb, var(--a-text) 72%, transparent);
+		--a-border: color-mix(in srgb, var(--a-text) 18%, transparent);
+
+		--a-a10: color-mix(in srgb, var(--a-accent) 14%, transparent);
+		--a-a14: color-mix(in srgb, var(--a-accent) 18%, transparent);
+		--a-a18: color-mix(in srgb, var(--a-accent) 22%, transparent);
+		--a-a28: color-mix(in srgb, var(--a-accent) 34%, transparent);
+		--a-a38: color-mix(in srgb, var(--a-accent) 46%, transparent);
+		--a-a55: color-mix(in srgb, var(--a-accent) 64%, transparent);
+		--a-a70: color-mix(in srgb, var(--a-accent) 82%, transparent);
+
+		--a-surface: color-mix(in srgb, var(--itchio_bg_color) 86%, black);
+	}
+}
+
+/* scoped base */
+#wrapper .custom-auteddy {
+	color: var(--a-text);
+	line-height: 1.55;
+	letter-spacing: 0.1px;
+}
+
+/* hero layout */
+#wrapper .custom-auteddy-hero {
+	display: grid;
+	grid-template-columns: 1.2fr 0.8fr;
+	gap: 14px;
+	margin: 10px 0 14px;
+}
+@media (max-width: 860px) {
+	#wrapper .custom-auteddy-hero {
+		grid-template-columns: 1fr;
+	}
+}
+
+#wrapper .custom-auteddy-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 0.9em;
+
+	> p {
+		padding: 15px;
+		margin: 0;
+	}
+}
+
+#wrapper .custom-auteddy-title {
+	margin: 6px 0 6px;
+	font-size: 26px;
+	font-weight: 900;
+}
+#wrapper .custom-auteddy-subtitle {
+	margin: 0 0 10px;
+	color: var(--a-muted);
+	font-size: 14.5px;
+}
+
+/* pills */
+#wrapper .custom-auteddy-pills {
+	display: flex;
+	gap: 8px;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	padding-bottom: 2px;
+}
+#wrapper .custom-auteddy-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 10px;
+	border-radius: 999px;
+	border: 1px solid var(--a-border);
+	background: rgba(255, 255, 255, 0.04);
+	font-weight: 900;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+/* cards */
+#wrapper .custom-auteddy-card {
+	background: rgba(21, 21, 24, 0.85);
+	border: 1px solid var(--a-border);
+	border-radius: 12px;
+	padding: 12px 14px;
+	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+#wrapper .custom-auteddy-card-soft {
+	background: var(--a-surface);
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+#wrapper .custom-auteddy-card-title {
+	font-weight: 900;
+	margin-bottom: 6px;
+}
+#wrapper .custom-auteddy-card-text {
+	color: var(--a-muted);
+	font-size: 13.5px;
+}
+
+/* quick specs */
+#wrapper .custom-auteddy-mini-label {
+	font-weight: 900;
+	letter-spacing: 0.7px;
+	text-transform: uppercase;
+	font-size: 12px;
+	margin-bottom: 8px;
+	color: rgba(255, 255, 255, 0.82);
+}
+#wrapper .custom-auteddy-mini-list {
+	margin: 0;
+	padding-left: 18px;
+	color: var(--a-muted);
+	font-size: 13px;
+}
+#wrapper .custom-auteddy-mini-list strong {
+	color: var(--a-text);
+}
+
+/* 3-up features */
+#wrapper .custom-auteddy-grid3 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	margin: 12px 0 16px;
+}
+@media (max-width: 860px) {
+	#wrapper .custom-auteddy-grid3 {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* lists */
+#wrapper .custom-auteddy-list {
+	margin: 0;
+	padding-left: 18px;
+	color: var(--a-muted);
+}
+#wrapper .custom-auteddy-list strong {
+	color: var(--a-text);
+}
+#wrapper .custom-auteddy-list-nested ul {
+	margin-top: 8px;
+	padding-left: 18px;
+}
+
+/* gallery grid */
+#wrapper .custom-auteddy-gallery {
+	display: grid;
+	gap: 12px;
+	margin-top: 10px;
+}
+
+#wrapper .custom-gallery-grid-1 {
+	grid-template-columns: var(--gallery-columns-1);
+}
+
+#wrapper .custom-gallery-grid-2 {
+	grid-template-columns: var(--gallery-columns-2);
+}
+
+#wrapper .custom-gallery-grid-3 {
+	grid-template-columns: var(--gallery-columns-3);
+}
+
+#wrapper .custom-gallery-grid-4 {
+	grid-template-columns: var(--gallery-columns-4);
+}
+
+@media (max-width: 980px) {
+	#wrapper .custom-auteddy-gallery {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+#wrapper .custom-auteddy-media {
+	border-radius: 16px;
+	border: 1px solid var(--a-border);
+	background: radial-gradient(circle at 30% 0%, var(--a-a14), transparent 48%), rgba(255, 255, 255, 0.03);
+	padding: 10px;
+	transition:
+		transform 0.15s ease,
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+#wrapper .custom-auteddy-media:hover {
+	transform: translateY(-2px);
+	border-color: var(--a-a38);
+	box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+}
+#wrapper .custom-auteddy-media img {
+	width: 100%;
+	height: auto;
+	display: block;
+	border-radius: 3px;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	background: rgba(0, 0, 0, 0.2);
+}
+#wrapper .custom-auteddy-caption {
+	margin-top: 8px;
+	font-size: 12.5px;
+	color: var(--a-muted);
+	font-weight: 800;
+	letter-spacing: 0.2px;
+	text-align: center;
+}
+
+/* helpers */
+#wrapper .custom-auteddy-muted {
+	color: var(--a-muted);
+}
+#wrapper .custom-auteddy-note {
+	margin: 10px 0 0;
+	color: var(--a-muted);
+	font-size: 12.5px;
+}
+#wrapper .custom-auteddy-hr {
+	border: 0;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.1);
+	margin: 18px 0;
+}
+
+/* links inside pack */
+#wrapper .custom-auteddy a {
+	color: var(--a-accent2);
+	text-decoration: none;
+	font-weight: 900;
+}
+#wrapper .custom-auteddy a:hover {
+	text-decoration: underline;
+}
+
+/* =========================================================
+   HUD HEADLINES (reusable)
+   - Add .custom-hud-h to any heading
+   - Also supports .custom-auteddy-h3 (alias)
+========================================================= */
+
+#wrapper :is(.custom-auteddy-card-request) {
+	border: 1px solid var(--hud-power-request-accent_1) !important;
+
+	background:
+		var(--custom-hud-layer-gloss-request), var(--custom-hud-layer-scan-request),
+		var(--custom-hud-layer-grid-request), var(--hud-request-bg) !important;
+
+	box-shadow: var(--custom-hud-shadow-request) !important;
+
+	> .custom-auteddy-h3 {
+		border: 1px solid var(--hud-request-border) !important;
+		background-color: var(--hud-bg) !important;
+
+		&::before {
+			background: conic-gradient(
+				from 90deg,
+				var(--hud-request-glow_line_1),
+				var(--hud-request-glow_line_2),
+				var(--hud-request-glow_line_2),
+				var(--hud-request-glow_line_1)
+			) !important;
+		}
+
+		> strong {
+			color: var(--hud-request-text) !important;
+
+			border: 1px solid var(--hud-request-border) !important;
+			background-color: var(--hud-request-bg) !important;
+
+			/* left power bar as background layer */
+			background-image:
+				linear-gradient(180deg, var(--hud-power-request-accent_1), var(--hud-power-request-accent_2)),
+				linear-gradient(90deg, var(--hud-power-request-accent_bg_1), var(--hud-power-request-accent_bg_2)) !important;
+
+			box-shadow:
+				0 16px 40px rgba(0, 0, 0, 0.5),
+				0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+				0 0 22px var(--a-a18) !important;
+
+			&::after {
+				border-top: 1px solid var(--hud-request-border);
+				border-right: 1px solid var(--hud-request-border);
+			}
+		}
+	}
+
+	> .custom-auteddy-text {
+		color: var(--hud-request-text) !important;
+		border: 1px solid var(--hud-request-border) !important;
+	}
+
+	&::after {
+		background: linear-gradient(
+			180deg,
+			var(--hud-power-request-accent_1),
+			var(--hud-power-request-accent_2)
+		) !important;
+	}
+}
+
+#wrapper :is(.custom-auteddy-card-licence) {
+	border: 1px solid var(--hud-power-licence-accent_1) !important;
+
+	background:
+		var(--custom-hud-layer-gloss-licence), var(--custom-hud-layer-scan-licence),
+		var(--custom-hud-layer-grid-licence), var(--hud-licence-bg) !important;
+
+	box-shadow: var(--custom-hud-shadow-licence) !important;
+
+	> .custom-auteddy-h3 {
+		border: 1px solid var(--hud-licence-border) !important;
+		background-color: var(--hud-bg) !important;
+
+		&::before {
+			background: conic-gradient(
+				from 90deg,
+				var(--hud-licence-glow_line_1),
+				var(--hud-licence-glow_line_2),
+				var(--hud-licence-glow_line_2),
+				var(--hud-licence-glow_line_1)
+			) !important;
+		}
+
+		> strong {
+			color: var(--hud-licence-text) !important;
+
+			border: 1px solid var(--hud-licence-border) !important;
+			background-color: var(--hud-licence-bg) !important;
+
+			/* left power bar as background layer */
+			background-image:
+				linear-gradient(180deg, var(--hud-power-licence-accent_1), var(--hud-power-licence-accent_2)),
+				linear-gradient(90deg, var(--hud-power-licence-accent_bg_1), var(--hud-power-licence-accent_bg_2)) !important;
+
+			box-shadow:
+				0 16px 40px rgba(0, 0, 0, 0.5),
+				0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+				0 0 22px var(--a-a18) !important;
+
+			&::after {
+				border-top: 1px solid var(--hud-licence-border);
+				border-right: 1px solid var(--hud-licence-border);
+			}
+		}
+	}
+
+	> .custom-auteddy-text {
+		color: var(--hud-licence-text) !important;
+		border: 1px solid var(--hud-licence-border) !important;
+
+		> .custom-auteddy-muted {
+			color: var(--hud-licence-muted) !important;
+
+			> a {
+				color: var(--hud-licence-link) !important;
+			}
+		}
+	}
+
+	&::after {
+		background: linear-gradient(
+			180deg,
+			var(--hud-power-licence-accent_1),
+			var(--hud-power-licence-accent_2)
+		) !important;
+	}
+}
+
+#wrapper :is(.custom-hud-h, .custom-auteddy-h3, .custom-auteddy-text) {
+	position: relative;
+	margin: 10px 0px;
+	padding: 10px;
+	border-radius: 16px;
+	overflow: hidden;
+
+	clip-path: polygon(
+		12px 0%,
+		calc(100% - 18px) 0%,
+		100% 18px,
+		100% calc(100% - 12px),
+		calc(100% - 12px) 100%,
+		18px 100%,
+		0% calc(100% - 18px),
+		0% 12px
+	);
+
+	border: 1px solid var(--hud-border);
+	background-color: var(--hud-bg);
+
+	/* background-image:
+		repeating-linear-gradient(
+			0deg,
+			rgba(255, 255, 255, 0.05) 0px,
+			rgba(255, 255, 255, 0.05) 1px,
+			transparent 1px,
+			transparent 16px
+		),
+		repeating-linear-gradient(
+			90deg,
+			var(--a-a10) 0px,
+			var(--a-a10) 1px,
+			transparent 1px,
+			transparent 18px
+		); */
+
+	box-shadow:
+		0 18px 44px rgba(0, 0, 0, 0.45),
+		0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+		0 0 28px var(--a-a10);
+}
+
+#wrapper :is(.custom-hud-h, .custom-auteddy-h3)::before {
+	content: '';
+	position: absolute;
+	inset: -70px;
+	z-index: 1;
+	pointer-events: none;
+
+	background: conic-gradient(
+		from 0deg,
+		var(--a-a55),
+		var(--a-a18),
+		rgba(255, 255, 255, 0.06),
+		var(--a-a28),
+		var(--a-a55)
+	);
+
+	filter: blur(18px);
+	opacity: 0.95;
+	transform: translate3d(0, 0, 0);
+	animation: custom-hud-energy 10s linear infinite;
+}
+
+#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong {
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	padding: 11px 40px 10px 40px;
+	text-align: center;
+
+	font-weight: 950;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 13px;
+	line-height: 1;
+	color: var(--hud-text);
+
+	clip-path: polygon(
+		10px 0%,
+		calc(100% - 18px) 0%,
+		100% 18px,
+		100% calc(100% - 10px),
+		calc(100% - 10px) 100%,
+		18px 100%,
+		0% calc(100% - 18px),
+		0% 10px
+	);
+
+	border: 1px solid var(--a-a55);
+	background-color: rgba(12, 12, 16, 0.72);
+
+	/* left power bar as background layer */
+	background-image:
+		linear-gradient(180deg, var(--a-a70), var(--a-a18)),
+		linear-gradient(90deg, var(--a-a28), rgba(255, 255, 255, 0.04));
+	background-size:
+		10px 16px,
+		100% 100%;
+	background-position:
+		9px 50%,
+		center;
+	background-repeat: no-repeat, no-repeat;
+
+	box-shadow:
+		0 16px 40px rgba(0, 0, 0, 0.5),
+		0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+		0 0 22px var(--a-a18);
+}
+
+/* circuitry overlay (tinted by accent, masked by svg) */
+#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	opacity: 0.55;
+	background: linear-gradient(90deg, var(--a-a28), rgba(255, 255, 255, 0.04));
+
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='64' viewBox='0 0 320 64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.30' stroke-width='1'%3E%3Cpath d='M14 18h48m18 0h26m20 0h48m18 0h26m20 0h48'/%3E%3Cpath d='M26 46h40m24 0h34m18 0h40m24 0h34m18 0h40'/%3E%3Cpath d='M62 18v12h14m44 16v-10h-16m98-18v12h14m44 16v-10h-16'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='.18'%3E%3Ccircle cx='14' cy='18' r='2'/%3E%3Ccircle cx='80' cy='18' r='2'/%3E%3Ccircle cx='26' cy='46' r='2'/%3E%3Ccircle cx='120' cy='46' r='2'/%3E%3Ccircle cx='202' cy='18' r='2'/%3E%3Ccircle cx='268' cy='18' r='2'/%3E%3Ccircle cx='214' cy='46' r='2'/%3E%3Ccircle cx='308' cy='46' r='2'/%3E%3C/g%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='64' viewBox='0 0 320 64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.30' stroke-width='1'%3E%3Cpath d='M14 18h48m18 0h26m20 0h48m18 0h26m20 0h48'/%3E%3Cpath d='M26 46h40m24 0h34m18 0h40m24 0h34m18 0h40'/%3E%3Cpath d='M62 18v12h14m44 16v-10h-16m98-18v12h14m44 16v-10h-16'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='.18'%3E%3Ccircle cx='14' cy='18' r='2'/%3E%3Ccircle cx='80' cy='18' r='2'/%3E%3Ccircle cx='26' cy='46' r='2'/%3E%3Ccircle cx='120' cy='46' r='2'/%3E%3Ccircle cx='202' cy='18' r='2'/%3E%3Ccircle cx='268' cy='18' r='2'/%3E%3Ccircle cx='214' cy='46' r='2'/%3E%3Ccircle cx='308' cy='46' r='2'/%3E%3C/g%3E%3C/svg%3E");
+	-webkit-mask-size: 320px 64px;
+	mask-size: 320px 64px;
+	-webkit-mask-repeat: repeat;
+	mask-repeat: repeat;
+	-webkit-mask-position: left center;
+	mask-position: left center;
+}
+
+/* notch detail */
+#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong::after {
+	content: '';
+	position: absolute;
+	right: 8px;
+	top: 7px;
+	width: 22px;
+	height: 10px;
+	border-top: 1px solid var(--a-a70);
+	border-right: 1px solid var(--a-a70);
+	opacity: 0.92;
+	transform: skewX(-18deg);
+	pointer-events: none;
+}
+
+#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong:hover {
+	transform: translateY(-1px);
+	box-shadow:
+		0 18px 46px rgba(0, 0, 0, 0.55),
+		0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+		0 0 30px var(--a-a18);
+}
+
+@keyframes custom-hud-energy {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	#wrapper :is(.custom-hud-h, .custom-auteddy-h3)::before {
+		animation: none;
+	}
+}
+
+/* =========================================================
+   AUTEDDY EXTRAS
+   - Table styling inside cards
+   - Gallery anchor polish
+   - Callout title helper
+   - Tree color tuning inside pack
+========================================================= */
+
+/* Callout title: keep it compact (avoid HUD headline panel) */
+#wrapper .custom-auteddy blockquote.custom-callout .custom-callout-title {
+	margin: 0.25em 0 0.35em;
+	font-weight: 900;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--a-accent2);
+}
+#wrapper .custom-auteddy blockquote.custom-callout .custom-callout-sub {
+	margin: 0;
+	color: var(--a-muted);
+}
+
+/* Tables inside the pack (your table is inside .custom-auteddy-card) */
+#wrapper .custom-auteddy table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 13.5px;
+	border: none !important;
+	margin: 0;
+}
+#wrapper .custom-auteddy table thead th {
+	text-align: left;
+	font-weight: 950;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 11.5px;
+	color: rgba(255, 255, 255, 0.92);
+
+	background: linear-gradient(90deg, var(--a-a18), rgba(255, 255, 255, 0.03)), rgba(12, 12, 16, 0.65);
+	border-bottom: 1px solid var(--a-border);
+	padding: 0.75em 0.9em;
+}
+#wrapper .custom-auteddy table td {
+	padding: 0.7em 0.9em;
+	border-bottom: 1px solid var(--a-border);
+	color: var(--a-text);
+}
+#wrapper .custom-auteddy table tbody tr:nth-child(odd) td {
+	background: rgba(255, 255, 255, 0.015);
+}
+#wrapper .custom-auteddy table tbody tr:hover td {
+	background: var(--a-a10);
+}
+@media (max-width: 560px) {
+	#wrapper .custom-auteddy table {
+		font-size: 12.5px;
+	}
+	#wrapper .custom-auteddy table thead th {
+		font-size: 11px;
+	}
+	#wrapper .custom-auteddy table td,
+	#wrapper .custom-auteddy table th {
+		padding: 0.6em 0.7em;
+	}
+}
+
+/* If a table is inside a card, allow horizontal scroll on tiny screens */
+@media (max-width: 560px) {
+	#wrapper .custom-auteddy .custom-auteddy-card {
+		overflow-x: auto;
+	}
+}
+
+/* Gallery: make the whole tile clickable & remove default link styling */
+#wrapper .custom-auteddy .custom-auteddy-media a {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+#wrapper .custom-auteddy .custom-auteddy-media a:focus {
+	outline: 2px solid var(--a-a38);
+	outline-offset: 3px;
+	border-radius: 12px;
+}
+#wrapper .custom-auteddy .custom-auteddy-media:hover img {
+	border-color: var(--a-a38);
+}
+
+/* Tree inside pack: tint connectors to accent */
+#wrapper .custom-auteddy .custom-tree {
+	--tree-outline-color: var(--a-a38);
+	color: var(--a-muted);
+}
+#wrapper .custom-auteddy .custom-tree li {
+	margin: 0.2em 0;
+}
+#wrapper .custom-auteddy .custom-tree li::before,
+#wrapper .custom-auteddy .custom-tree li::after {
+	border-color: var(--a-a38) !important;
+	opacity: 0.9;
+}
+
+/* =========================================================
+   HUD SURFACES (apply H3 "HUD" look to other components)
+   - Keeps everything scoped to .custom-auteddy so it won't
+     mess with other itch pages.
+========================================================= */
+
+/* Shared HUD shape + layered background recipe */
+#wrapper .custom-auteddy {
+	--custom-hud-shape: polygon(
+		12px 0%,
+		calc(100% - 18px) 0%,
+		100% 18px,
+		100% calc(100% - 12px),
+		calc(100% - 12px) 100%,
+		18px 100%,
+		0% calc(100% - 18px),
+		0% 12px
+	);
+
+	/* panel layering (same DNA as H3) */
+	--custom-hud-layer-gloss:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 46%),
+		radial-gradient(circle at 18% 0%, var(--a-a18), transparent 52%),
+		radial-gradient(circle at 95% 120%, var(--a-a10), transparent 45%);
+
+	--custom-hud-layer-scan: repeating-linear-gradient(
+		0deg,
+		rgba(255, 255, 255, 0.045) 0px,
+		rgba(255, 255, 255, 0.045) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-layer-grid: repeating-linear-gradient(
+		90deg,
+		var(--a-a10) 0px,
+		var(--a-a10) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-shadow:
+		0 18px 44px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 28px var(--a-a10);
+
+	/* panel layering (same DNA as H3) */
+	--custom-hud-layer-gloss-accordion:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 46%),
+		radial-gradient(circle at 18% 0%, var(--a-a18), transparent 52%),
+		radial-gradient(circle at 95% 120%, var(--a-a10), transparent 45%);
+
+	--custom-hud-layer-scan-accordion: repeating-linear-gradient(
+		0deg,
+		rgba(255, 0, 0, 0.297) 0px,
+		rgba(255, 0, 0, 0.273) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-layer-grid-accordion: repeating-linear-gradient(
+		90deg,
+		rgba(255, 0, 0, 0.297) 0px,
+		rgba(255, 0, 0, 0.273) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-shadow:
+		0 18px 44px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 28px var(--a-a10);
+
+	/* panel layering (same DNA as H3) */
+	--custom-hud-layer-gloss-request:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 46%),
+		radial-gradient(
+			circle at 18% 0%,
+			color-mix(in srgb, rgba(255, 255, 255, 0.04), transparent 65%),
+			transparent 52%
+		),
+		radial-gradient(
+			circle at 95% 120%,
+			color-mix(in srgb, rgba(255, 255, 255, 0.04), transparent 5%),
+			transparent 45%
+		);
+
+	--custom-hud-layer-grid-request: repeating-linear-gradient(
+		90deg,
+		color-mix(in srgb, var(--hud-request-gird1), transparent 0%) 0px,
+		color-mix(in srgb, var(--hud-request-gird2), transparent 65%) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-layer-scan-request: repeating-linear-gradient(
+		0deg,
+		color-mix(in srgb, var(--hud-request-gird1), transparent 0%) 0px,
+		color-mix(in srgb, var(--hud-request-gird2), transparent 65%) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-shadow-request:
+		0 18px 44px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+		0 0 28px var(--hud-power-request-accent_1);
+
+	/* panel layering (same DNA as H3) */
+	--custom-hud-layer-gloss-licence:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 46%),
+		radial-gradient(
+			circle at 18% 0%,
+			color-mix(in srgb, rgba(255, 255, 255, 0.04), transparent 65%),
+			transparent 52%
+		),
+		radial-gradient(
+			circle at 95% 120%,
+			color-mix(in srgb, rgba(255, 255, 255, 0.04), transparent 5%),
+			transparent 45%
+		);
+
+	--custom-hud-layer-grid-licence: repeating-linear-gradient(
+		90deg,
+		color-mix(in srgb, var(--hud-licence-gird1), transparent 0%) 0px,
+		color-mix(in srgb, var(--hud-licence-gird2), transparent 65%) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-layer-scan-licence: repeating-linear-gradient(
+		0deg,
+		color-mix(in srgb, var(--hud-licence-gird1), transparent 0%) 0px,
+		color-mix(in srgb, var(--hud-licence-gird2), transparent 65%) 1px,
+		transparent 1px,
+		transparent 18px
+	);
+
+	--custom-hud-shadow-licence:
+		0 18px 44px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+		0 0 28px var(--hud-power-licence-accent_1);
+}
+
+/* Reusable utility class (optional) */
+#wrapper .custom-auteddy .custom-hud-panel {
+	position: relative;
+	overflow: hidden;
+
+	clip-path: var(--custom-hud-shape);
+	border: 1px solid var(--a-border);
+	border-radius: 16px;
+
+	background:
+		var(--custom-hud-layer-gloss), var(--custom-hud-layer-scan), var(--custom-hud-layer-grid), var(--a-surface);
+
+	box-shadow: var(--custom-hud-shadow);
+}
+
+/* ---------- Apply HUD panel look to your main components ---------- */
+
+/* Cards + callout + gallery tiles get HUD panel treatment */
+#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media) {
+	position: relative;
+	overflow: hidden;
+
+	clip-path: var(--custom-hud-shape);
+	border-radius: 16px;
+
+	border: 1px solid var(--a-border);
+
+	background:
+		var(--custom-hud-layer-gloss), var(--custom-hud-layer-scan), var(--custom-hud-layer-grid),
+		rgba(12, 12, 16, 0.62);
+
+	box-shadow: var(--custom-hud-shadow);
+}
+
+#wrapper .custom-auteddy :is(.custom-auteddy-media) {
+	position: relative;
+	overflow: hidden;
+
+	clip-path: var(--custom-hud-shape);
+	border-radius: 16px;
+
+	border: 1px solid var(--a-border);
+
+	/* background:
+		var(--custom-hud-layer-gloss), var(--custom-hud-layer-scan),
+		var(--custom-hud-layer-grid), rgba(12, 12, 16, 0.62); */
+	background: rgba(12, 12, 16, 0.62) !important;
+
+	box-shadow: var(--custom-hud-shadow);
+}
+
+/* Keep content above energy layer */
+#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media) > * {
+	position: relative;
+	z-index: 2;
+}
+
+/* Callout becomes a proper HUD card (override pitch.css default) */
+#wrapper .custom-auteddy blockquote.custom-callout {
+	margin: 14px 0 16px;
+	padding: 12px 14px 14px;
+	border-left: 1px solid var(--a-border); /* disable heavy left stripe */
+}
+
+/* Accent edge: subtle neon line on the left */
+#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 10px;
+	bottom: 10px;
+	width: 3px;
+	border-radius: 999px;
+	background: linear-gradient(180deg, var(--a-a70), var(--a-a18));
+	opacity: 0.65;
+	z-index: 2;
+	box-shadow: 0 0 18px var(--a-a18);
+}
+
+/* Animated energy layer:
+   - Always on for .custom-auteddy-card-soft + callouts
+   - Hover-trigger for other cards/media */
+#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
+	content: '';
+	position: absolute;
+	inset: -70px;
+	z-index: 1;
+	pointer-events: none;
+
+	background: conic-gradient(
+		from 0deg,
+		var(--a-a55),
+		var(--a-a18),
+		rgba(255, 255, 255, 0.06),
+		var(--a-a28),
+		var(--a-a55)
+	);
+
+	filter: blur(20px);
+	transform: translate3d(0, 0, 0);
+	opacity: 0; /* default off (performance) */
+	animation: custom-hud-energy-soft 18s linear infinite;
+	transition: opacity 0.2s ease;
+}
+
+/* Always-on for the important panels */
+#wrapper .custom-auteddy :is(.custom-auteddy-card-soft, blockquote.custom-callout)::before {
+	opacity: 0.32;
+}
+
+/* Hover glow for interactive pieces */
+#wrapper .custom-auteddy :is(.custom-auteddy-card:hover, .custom-auteddy-media:hover)::before {
+	opacity: 0.28;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
+		animation: none;
+	}
+}
+
+/* ---------- Pills: small HUD chips ---------- */
+#wrapper .custom-auteddy .custom-auteddy-pill {
+	position: relative;
+	overflow: hidden;
+	border-radius: 5px;
+	border: 1px solid var(--itchio_header_color);
+	background: color-mix(in srgb, var(--itchio_header_color), transparent 65%);
+}
+
+#wrapper .custom-auteddy .custom-auteddy-pill:hover {
+	border-color: var(--a-a38);
+	box-shadow: 0 0 18px var(--a-a14);
+}
+
+/* ---------- Tables: match HUD look ---------- */
+#wrapper .custom-auteddy .custom-auteddy-card table {
+	background: transparent;
+}
+
+#wrapper .custom-auteddy .custom-auteddy-card table thead th {
+	border-bottom: 1px solid var(--a-border) !important;
+}
+
+#wrapper .custom-auteddy .custom-auteddy-card table td {
+	border-bottom: 1px solid var(--a-border) !important;
+}
+
+/* ---------- Gallery: make tiles feel like panels ---------- */
+#wrapper .custom-auteddy .custom-auteddy-media {
+	transition:
+		transform 0.15s ease,
+		box-shadow 0.15s ease,
+		border-color 0.15s ease;
+}
+#wrapper .custom-auteddy .custom-auteddy-media:hover {
+	transform: translateY(-2px);
+	border-color: var(--a-a38);
+	box-shadow:
+		0 22px 55px rgba(0, 0, 0, 0.5),
+		0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+		0 0 34px var(--a-a14);
+}
+
+/* Make the image background also “HUD-ish” */
+#wrapper .custom-auteddy .custom-auteddy-media img {
+	background: radial-gradient(circle at 20% 0%, var(--a-a10), transparent 55%), rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- HR: accent scanline ---------- */
+#wrapper .custom-auteddy .custom-auteddy-hr {
+	height: 2px;
+	border-radius: 999px;
+	background: linear-gradient(90deg, var(--a-a70), var(--a-a18) 35%, var(--a-a70) 70%, transparent);
+	box-shadow: 0 0 18px var(--a-a14);
+}
+
+/* ---------- Optional: pitch utilities inside your pack also become HUD ---------- */
+#wrapper .custom-auteddy :is(.custom-accrd, .custom-code) {
+	border-radius: 16px;
+	border-color: var(--itchio_button_color) !important;
+	box-shadow: var(--custom-hud-shadow);
+}
+
+#wrapper .custom-auteddy .custom-accrd {
+	clip-path: var(--custom-hud-shape);
+	background:
+		var(--custom-hud-layer-gloss-accordion), var(--custom-hud-layer-scan-accordion),
+		var(--custom-hud-layer-grid-accordion), var(--a-surface);
+}
+
+#wrapper .custom-auteddy .custom-code {
+	background:
+		var(--custom-hud-layer-gloss), var(--custom-hud-layer-scan), var(--custom-hud-layer-grid), rgba(12, 12, 16, 0.6);
+}
+
+/* softer, slower spin used for panels */
+@keyframes custom-hud-energy-soft {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* =========================================
+   #wrapper background: Isometric grid + ortho lines
+   - isometric: 30° + 150° diagonals
+   - extra: vertical + horizontal lines
+   - animated glow layer (subtle)
+========================================= */
+
+#wrapper {
+	position: relative;
+}
+
+/* Grid layer */
+#wrapper::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+
+	/* overall strength */
+	opacity: 1;
+
+	/* use theme accent */
+	--bg-accent: var(--itchio_header_color);
+
+	/* Fallback if color-mix isn't supported */
+	--iso-strong: rgba(206, 35, 82, 0.16);
+	--iso-soft: rgba(206, 35, 82, 0.1);
+	--grid-vh: rgba(255, 255, 255, 0.05);
+
+	/* Prefer dynamic tinting from your header color */
+	background-image:
+    /* horizontal lines */
+		repeating-linear-gradient(0deg, var(--grid-vh) 0 1px, transparent 0px 5px),
+		/* vertical lines */ repeating-linear-gradient(90deg, var(--grid-vh) 0 1px, transparent 0px 5px),
+		/* isometric diagonal A (30°) */ repeating-linear-gradient(30deg, var(--iso-soft) 0 1px, transparent 0px 50px),
+		/* isometric diagonal B (150°) */ repeating-linear-gradient(150deg, var(--iso-soft) 0 1px, transparent 0px 50px),
+		/* occasional thicker “major” isometric lines */
+		repeating-linear-gradient(30deg, var(--iso-strong) 0 1px, transparent 0px 100px),
+		repeating-linear-gradient(150deg, var(--iso-strong) 0 1px, transparent 0px 100px);
+
+	filter: blur(0px);
+	transform: translate3d(0, 0, 0);
+
+	/* gentle drift so it feels alive */
+	animation: custom-iso-grid-drift 38s linear infinite;
+}
+
+/* Glow layer (moving, very subtle) */
+#wrapper::after {
+	content: '';
+	position: fixed;
+	inset: -40%;
+	z-index: 0;
+	pointer-events: none;
+
+	opacity: 0.14;
+
+	background:
+		radial-gradient(
+			circle at 20% 15%,
+			color-mix(in srgb, var(--itchio_header_color) 26%, transparent),
+			transparent 45%
+		),
+		radial-gradient(
+			circle at 80% 85%,
+			color-mix(in srgb, var(--itchio_header_color) 22%, transparent),
+			transparent 55%
+		),
+		conic-gradient(
+			from 0deg,
+			transparent,
+			color-mix(in srgb, var(--itchio_header_color) 26%, transparent),
+			transparent
+		);
+
+	filter: blur(28px);
+	transform: translate3d(0, 0, 0);
+	animation: custom-bg-spin 26s linear infinite;
+}
+
+/* Keep page content above the background */
+#wrapper > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* If browser supports color-mix, tint the grid by theme color */
+@supports (color: color-mix(in srgb, #000, #fff)) {
+	#wrapper::before {
+		--grid-vh: color-mix(in srgb, #fff 6%, transparent);
+		--iso-soft: color-mix(in srgb, var(--itchio_header_color) 14%, transparent);
+		--iso-strong: color-mix(in srgb, var(--itchio_header_color) 22%, transparent);
+	}
+}
+
+/*CSS Carousel*/
+/* =========================================================
+   HUD SLIDER (HTML+CSS only, no anchors/ids/names)
+   - seamless loop via cloned slide
+   - HUD styling
+   - FIXED image scaling (cover or contain)
+========================================================= */
+
+.custom-auteddy-slider {
+	position: relative;
+	overflow: hidden;
+	border-radius: 16px;
+	padding: 15px;
+
+	/* stable "banner" height */
+	height: auto;
+
+	/* base background while images load */
+	background: rgba(0, 0, 0, 0.18);
+
+	/* HUD border + glow (uses your theme accent if available) */
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow:
+		0 18px 44px rgba(0, 0, 0, 0.48),
+		0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.custom-auteddy-slider_wrap {
+	overflow: hidden;
+	padding: 3px;
+	border-radius: 15px;
+}
+
+.custom-auteddy-slider_wrap::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+
+	/* fade edges for better seamless illusion */
+	background: linear-gradient(
+		to right,
+		var(--itchio_header_color, #000000),
+		transparent 30%,
+		transparent 70%,
+		var(--itchio_header_color, #000000)
+	);
+
+	/* animation: gradient 5s ease infinite; */
+}
+
+.custom-auteddy-slider_wrap::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+
+	/* fade edges for better seamless illusion */
+	background: linear-gradient(
+		to right,
+		var(--itchio_button_color, #000000),
+		transparent 5%,
+		transparent 95%,
+		var(--itchio_button_color, #000000)
+	);
+}
+
+/* optional: subtle HUD layers inside slider */
+.custom-auteddy-slider::before {
+	content: '';
+	position: absolute;
+	inset: -60px;
+	pointer-events: none;
+	z-index: 0;
+
+	background: conic-gradient(
+		from 0deg,
+		color-mix(in srgb, var(--itchio_header_color) 55%, transparent),
+		color-mix(in srgb, var(--itchio_header_color) 22%, transparent),
+		rgba(255, 255, 255, 0.06),
+		color-mix(in srgb, var(--itchio_header_color) 34%, transparent),
+		color-mix(in srgb, var(--itchio_header_color) 55%, transparent)
+	);
+
+	filter: blur(18px);
+	opacity: 0.18;
+	animation: custom-auteddy-slider-glow 16s linear infinite;
+}
+
+@keyframes custom-auteddy-slider-glow {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.custom-auteddy-slider::before {
+		animation: none;
+	}
+}
+
+/* track */
+.custom-auteddy-slider__track {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+
+	display: flex;
+	width: auto; /* 4 slides + clone */
+	height: 100%;
+
+	animation: custom-auteddy-slide 20s infinite;
+	will-change: transform;
+
+	position: relative;
+	z-index: 1; /* above glow */
+}
+
+/* slide */
+.custom-auteddy-slider__slide {
+	flex: 0 0 100%;
+	width: 100%;
+	min-width: 100%;
+	height: 100%;
+}
+
+/* image scaling fix */
+.custom-auteddy-slider__slide img {
+	display: block;
+
+	/* --- choose one --- */
+
+	/* Mode A: fills the banner nicely (cropping OK) */
+	object-fit: cover;
+
+	/* Mode B: no cropping (letterbox/pillarbox) */
+	/* object-fit: contain; */
+
+	object-position: center;
+	border: 0;
+}
+
+/* optional: if using contain mode, add a nice frame */
+.custom-auteddy-slider__slide {
+	background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.05), transparent 55%), rgba(0, 0, 0, 0.16);
+}
+
+/* pause on hover/focus */
+.custom-auteddy-slider:hover .custom-auteddy-slider__track,
+.custom-auteddy-slider:focus-within .custom-auteddy-slider__track {
+	animation-play-state: paused;
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+	.custom-auteddy-slider__track {
+		animation: none !important;
+		transform: translateX(0) !important;
+	}
+}
+
+/* keyframes: 4 slides + clone */
+@keyframes custom-auteddy-slide {
+	0% {
+		transform: translateX(0%);
+	}
+	18% {
+		transform: translateX(0%);
+	}
+	22% {
+		transform: translateX(-100%);
+	}
+
+	40% {
+		transform: translateX(-100%);
+	}
+	44% {
+		transform: translateX(-200%);
+	}
+
+	62% {
+		transform: translateX(-200%);
+	}
+	66% {
+		transform: translateX(-300%);
+	}
+
+	84% {
+		transform: translateX(-300%);
+	}
+	88% {
+		transform: translateX(-400%);
+	} /* clone of slide 1 */
+
+	100% {
+		transform: translateX(-400%);
+	}
+}
+
+/* =========================================================
+   LONG HUD MARQUEE (HTML+CSS only)
+   - Seamless loop by duplicating items once
+   - No anchors / no ids / no names needed
+========================================================= */
+
+.custom-auteddy-marquee {
+	--dur: 14s; /* speed: smaller = faster */
+	--gap: 12px;
+	--item-w: clamp(240px, 34vw, 520px);
+	--item-h: clamp(160px, 22vw, 280px);
+
+	position: relative;
+	overflow: hidden;
+	border-radius: 16px;
+
+	height: var(--item-h);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(0, 0, 0, 0.18);
+	box-shadow:
+		0 18px 44px rgba(0, 0, 0, 0.48),
+		0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.custom-auteddy-marquee_wrap {
+	overflow: hidden;
+	padding: 3px;
+	border-radius: 15px;
+}
+
+.custom-auteddy-marquee_wrap::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+
+	/* fade edges for better seamless illusion */
+	background: linear-gradient(
+		to right,
+		var(--itchio_header_color, #000000),
+		transparent 30%,
+		transparent 70%,
+		var(--itchio_header_color, #000000)
+	);
+}
+
+.custom-auteddy-marquee_wrap::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+
+	/* fade edges for better seamless illusion */
+	background: linear-gradient(
+		to right,
+		var(--itchio_button_color, #000000),
+		transparent 5%,
+		transparent 95%,
+		var(--itchio_button_color, #000000)
+	);
+}
+
+/* optional: subtle HUD glow layer */
+.custom-auteddy-marquee::before {
+	content: '';
+	position: absolute;
+	inset: -60px;
+	pointer-events: none;
+	z-index: 0;
+
+	background: conic-gradient(
+		from 0deg,
+		color-mix(in srgb, var(--itchio_header_color) 55%, transparent),
+		color-mix(in srgb, var(--itchio_header_color) 22%, transparent),
+		rgba(255, 255, 255, 0.06),
+		color-mix(in srgb, var(--itchio_header_color) 34%, transparent),
+		color-mix(in srgb, var(--itchio_header_color) 55%, transparent)
+	);
+	filter: blur(18px);
+	opacity: 0.14;
+	animation: custom-auteddy-marquee-glow 18s linear infinite;
+}
+
+@keyframes custom-auteddy-marquee-glow {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.custom-auteddy-marquee::before {
+		animation: none;
+	}
+}
+
+/* Track */
+.custom-auteddy-marquee__track {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+
+	position: relative;
+	z-index: 1;
+
+	display: flex;
+	align-items: stretch;
+	gap: var(--gap);
+
+	height: 271px;
+	width: max-content; /* ✅ let content define width */
+	will-change: transform;
+
+	animation: custom-auteddy-marquee-move var(--dur) linear infinite;
+}
+
+/* Each item */
+.custom-auteddy-marquee__item {
+	flex: 0 0 auto;
+	width: auto;
+	height: auto;
+	padding: 15px;
+
+	border-radius: 14px;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.163);
+
+	/*background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.537), transparent 55%), rgba(0, 0, 0, 0.549);*/
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Fit fix: make images fill the tile correctly */
+.custom-auteddy-marquee__item img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* change to contain if you prefer */
+	object-position: center;
+}
+
+/* Pause on hover/focus */
+.custom-auteddy-marquee:hover .custom-auteddy-marquee__track,
+.custom-auteddy-marquee:focus-within .custom-auteddy-marquee__track {
+	animation-play-state: paused;
+}
+
+/* Seamless loop:
+   because you duplicated the set, moving by -50% lands exactly on the clone boundary */
+@keyframes custom-auteddy-marquee-move {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.custom-auteddy-marquee__track {
+		animation: none !important;
+	}
+}
