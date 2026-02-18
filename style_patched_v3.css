@@ -987,7 +987,8 @@ ul.custom-dot-leader.custom-tree {
 	margin-top: 25px;
 }
 
-.view_game_page {
+.view_game_page,
+.profile_content {
 	margin-top: 15px;
 	background-color: var(--itchio_bg_color);
 	border-left: 2px solid var(--itchio_header_color) !important;
@@ -2076,38 +2077,224 @@ ul.custom-dot-leader.custom-tree {
 	animation: custom-iso-grid-drift 38s linear infinite;
 }
 
-/* Glow layer (moving, very subtle) */
+/* Glow layer (moving, very subtle)
 :is(#wrapper, .user_page_wrap)::after {
 	content: '';
 	position: fixed;
-	inset: -40%;
+	inset: -100%;
 	z-index: 0;
 	pointer-events: none;
 
-	opacity: 0.14;
+	opacity: 1;
 
 	background:
 		radial-gradient(
 			circle at 20% 15%,
-			color-mix(in srgb, var(--itchio_header_color) 26%, transparent),
+			color-mix(in srgb, var(--itchio_header_color) 25%, transparent),
 			transparent 45%
 		),
 		radial-gradient(
 			circle at 80% 85%,
-			color-mix(in srgb, var(--itchio_header_color) 22%, transparent),
+			color-mix(in srgb, var(--itchio_button_color) 25%, transparent),
 			transparent 55%
 		),
 		conic-gradient(
 			from 0deg,
 			transparent,
-			color-mix(in srgb, var(--itchio_header_color) 26%, transparent),
+			color-mix(in srgb, var(--itchio_header_color) 15%, transparent),
 			transparent
 		);
 
 	filter: blur(28px);
 	transform: translate3d(0, 0, 0);
 	animation: custom-bg-spin 26s linear infinite;
+} */
+/* =========================================================
+   DOTS + PULSE RINGS (major iso lines only)
+   - 3 color vars as rgba() -> color picker friendly
+   - moving dot flow + 2 pulse lifetimes
+========================================================= */
+
+/* 3 picker-friendly rgba() vars (override anywhere) */
+:is(#wrapper, .user_page_wrap) {
+	--auteddy_dot_color: rgba(0, 221, 255, 0.95);
+	--auteddy_pulse1_color: rgb(255, 0, 187);
+	--auteddy_pulse2_color: rgb(255, 255, 0);
 }
+
+/* optional: animate custom props smoothly (Chromium/modern) */
+@property --p1 {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 22px;
+}
+@property --p2 {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 26px;
+}
+@property --a1 {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 0%;
+}
+@property --a2 {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 0%;
+}
+
+:is(#wrapper, .user_page_wrap)::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+
+	/* performance + look (desktop default) */
+	opacity: 1;
+	mix-blend-mode: screen;
+
+	/* pulse state */
+	--p1: 250px;
+	--p2: 500px;
+	--a1: 0%;
+	--a2: 0%;
+
+	/* DOTS (2 layers) + PULSE RINGS (2 lifetimes) */
+	background-image:
+    /* dots main */
+		radial-gradient(circle, var(--auteddy_dot_color) 0 1.6px, transparent 2.9px),
+		/* dots soft */
+		radial-gradient(
+				circle,
+				color-mix(in srgb, var(--auteddy_dot_color) 38%, transparent) 0 1.1px,
+				transparent 2.6px
+			),
+		/* pulse ring 1 (big -> small, fade out) */
+		radial-gradient(
+				circle,
+				transparent calc(var(--p1) - 3px),
+				color-mix(in srgb, var(--auteddy_pulse1_color) var(--a1), transparent) calc(var(--p1) - 2px)
+					calc(var(--p1) + 2px),
+				transparent calc(var(--p1) + 3px)
+			),
+		/* pulse ring 2 (different lifetime/phase) */
+		radial-gradient(
+				circle,
+				transparent calc(var(--p2) - 3px),
+				color-mix(in srgb, var(--auteddy_pulse2_color) var(--a2), transparent) calc(var(--p2) - 2px)
+					calc(var(--p2) + 2px),
+				transparent calc(var(--p2) + 3px)
+			);
+
+	/* align layers */
+	background-size:
+		26px 26px,
+		52px 52px,
+		26px 26px,
+		26px 26px;
+	background-position:
+		0 0,
+		13px 13px,
+		0 0,
+		0 0;
+
+	/* MORE GLOW (still reasonable) */
+	filter: blur(0.35px) drop-shadow(0 0 10px color-mix(in srgb, var(--auteddy_dot_color) 55%, transparent))
+		drop-shadow(0 0 22px color-mix(in srgb, var(--auteddy_dot_color) 30%, transparent));
+
+	transform: translate3d(0, 0, 0);
+
+	/* motion (slower = smoother scrolling) */
+	animation:
+		custom-iso-dotflow 18s linear infinite,
+		custom-iso-dotpulse 7s linear infinite;
+}
+
+/* Mobile: keep dots moving but disable pulses (lighter) */
+@media (max-width: 900px) {
+	:is(#wrapper, .user_page_wrap)::after {
+		mix-blend-mode: normal;
+		opacity: 0.45;
+		filter: blur(0.25px) drop-shadow(0 0 10px color-mix(in srgb, var(--auteddy_dot_color) 35%, transparent));
+
+		animation: custom-iso-dotflow 22s linear infinite;
+		/* pulses removed by removing second animation */
+	}
+}
+
+/* Mask to ONLY the major iso lines (100px spacing) */
+@supports (-webkit-mask-image: linear-gradient(#000, #000)) or (mask-image: linear-gradient(#000, #000)) {
+	:is(#wrapper, .user_page_wrap)::after {
+		-webkit-mask-image:
+			repeating-linear-gradient(30deg, #000 0 2px, transparent 2px 100px),
+			repeating-linear-gradient(150deg, #000 0 2px, transparent 2px 100px);
+		mask-image:
+			repeating-linear-gradient(30deg, #000 0 2px, transparent 2px 100px),
+			repeating-linear-gradient(150deg, #000 0 2px, transparent 2px 100px);
+
+		-webkit-mask-repeat: repeat, repeat;
+		mask-repeat: repeat, repeat;
+	}
+}
+
+/* Dot drift */
+@keyframes custom-iso-dotflow {
+	0% {
+		background-position:
+			0 0,
+			13px 13px,
+			0 0,
+			0 0;
+	}
+	100% {
+		background-position:
+			260px 180px,
+			-120px 80px,
+			260px 180px,
+			260px 180px;
+	}
+}
+
+/* Pulses: big -> small, fade out, two different lifetimes */
+@keyframes custom-iso-dotpulse {
+	/* pulse 1 */
+	0% {
+		--p1: 24px;
+		--a1: 0%;
+		--p2: 18px;
+		--a2: 0%;
+	}
+	12% {
+		--a1: 70%;
+	}
+	45% {
+		--p1: 8px;
+		--a1: 0%;
+	}
+
+	/* pulse 2 (offset) */
+	55% {
+		--p2: 28px;
+		--a2: 0%;
+	}
+	68% {
+		--a2: 55%;
+	}
+	100% {
+		--p2: 10px;
+		--a2: 0%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:is(#wrapper, .user_page_wrap)::after {
+		animation: none;
+	}
+}
+
+/*end of bg*/
 
 /* Keep page content above the background */
 :is(#wrapper, .user_page_wrap) > * {
