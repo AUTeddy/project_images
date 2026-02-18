@@ -7,8 +7,7 @@
 	content: 'DEVELOPER';
 } */
 
-#wrapper,
-.wrapper {
+:is(#wrapper, .user_page_wrap) {
 	--itchio_font_family: Roboto;
 	--itchio_bg_color: #07060d;
 	--itchio_bg2_color: #07060d;
@@ -101,7 +100,8 @@
 	--gallery-columns-4: repeat(4, 1fr);
 }
 
-#wrapper .inner_column {
+:is(#wrapper, .user_page_wrap) .inner_column,
+:is(#wrapper, .user_page_wrap) .profile_column {
 	background-color: transparent !important;
 }
 
@@ -180,7 +180,10 @@
 		U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-body:not(:has(.game_page_apperance_columns)) #user_tools:not(:has(.is_following)) ~ #wrapper .custom-foll-disc {
+body:not(:has(.game_page_apperance_columns))
+	#user_tools:not(:has(.is_following))
+	~ :is(#wrapper, .user_page_wrap)
+	.custom-foll-disc {
 	font-family: 'Flow Rounded' !important;
 	pointer-events: none;
 	-webkit-touch-callout: none;
@@ -484,7 +487,7 @@ dl.custom-info.custom-left {
 dl.custom-info.custom-right {
 	grid-template-columns: auto min-content;
 }
-#wrapper kbd {
+:is(#wrapper, .user_page_wrap) kbd {
 	font-size: 0.8em;
 	background: var(--br);
 	border-radius: 5px;
@@ -713,17 +716,17 @@ a.custom-lb {
 	color: var(--t);
 	background: var(--t);
 }
-#wrapper :not(.game_info_panel_widget) > table {
+:is(#wrapper, .user_page_wrap) :not(.game_info_panel_widget) > table {
 	width: 100%;
 	border-color: var(--br);
 }
-#wrapper :not(.game_info_panel_widget) > table td,
-#wrapper :not(.game_info_panel_widget) > table th {
+:is(#wrapper, .user_page_wrap) :not(.game_info_panel_widget) > table td,
+:is(#wrapper, .user_page_wrap) :not(.game_info_panel_widget) > table th {
 	border: none !important;
 	border-bottom: 1px solid var(--br) !important;
 	padding: 1em 1em !important;
 }
-#wrapper :not(.game_info_panel_widget) > table th {
+:is(#wrapper, .user_page_wrap) :not(.game_info_panel_widget) > table th {
 	background: var(--b2s);
 }
 .custom-tl-list {
@@ -809,12 +812,12 @@ a.custom-lb {
 [class^='custom-content-'] {
 	display: none;
 }
-:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-a']) .custom-content-a,
-:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-b']) .custom-content-b,
-:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-c']) .custom-content-c,
-:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-d']) .custom-content-d,
-:is(#wrapper, .primary_column):has(a.custom-toggle:target[name='toggle-e']) .custom-content-e,
-:is(#wrapper, .primary_column):not(:has(a.custom-toggle:target)) .custom-content-a {
+:is(#wrapper, .user_page_wrap, .primary_column):has(a.custom-toggle:target[name='toggle-a']) .custom-content-a,
+:is(#wrapper, .user_page_wrap, .primary_column):has(a.custom-toggle:target[name='toggle-b']) .custom-content-b,
+:is(#wrapper, .user_page_wrap, .primary_column):has(a.custom-toggle:target[name='toggle-c']) .custom-content-c,
+:is(#wrapper, .user_page_wrap, .primary_column):has(a.custom-toggle:target[name='toggle-d']) .custom-content-d,
+:is(#wrapper, .user_page_wrap, .primary_column):has(a.custom-toggle:target[name='toggle-e']) .custom-content-e,
+:is(#wrapper, .user_page_wrap, .primary_column):not(:has(a.custom-toggle:target)) .custom-content-a {
 	display: block;
 }
 .custom-toggles:not(:has(a.custom-toggle:target)) a.custom-toggle[name='toggle-a'],
@@ -1032,7 +1035,7 @@ ul.custom-dot-leader.custom-tree {
 /* Theme-driven variables */
 
 @supports (color: color-mix(in srgb, #000, #fff)) {
-	#wrapper {
+	:is(#wrapper, .user_page_wrap) {
 		--a-muted: color-mix(in srgb, var(--a-text) 72%, transparent);
 		--a-border: color-mix(in srgb, var(--a-text) 18%, transparent);
 
@@ -1049,26 +1052,26 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* scoped base */
-#wrapper .custom-auteddy {
+:is(#wrapper, .user_page_wrap) .custom-auteddy {
 	color: var(--a-text);
 	line-height: 1.55;
 	letter-spacing: 0.1px;
 }
 
 /* hero layout */
-#wrapper .custom-auteddy-hero {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-hero {
 	display: grid;
 	grid-template-columns: 1.2fr 0.8fr;
 	gap: 14px;
 	margin: 10px 0 14px;
 }
 @media (max-width: 860px) {
-	#wrapper .custom-auteddy-hero {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy-hero {
 		grid-template-columns: 1fr;
 	}
 }
 
-#wrapper .custom-auteddy-text {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-text {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -1080,26 +1083,26 @@ ul.custom-dot-leader.custom-tree {
 	}
 }
 
-#wrapper .custom-auteddy-title {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-title {
 	margin: 6px 0 6px;
 	font-size: 26px;
 	font-weight: 900;
 }
-#wrapper .custom-auteddy-subtitle {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-subtitle {
 	margin: 0 0 10px;
 	color: var(--a-muted);
 	font-size: 14.5px;
 }
 
 /* pills */
-#wrapper .custom-auteddy-pills {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-pills {
 	display: flex;
 	gap: 8px;
 	flex-wrap: nowrap;
 	overflow-x: auto;
 	padding-bottom: 2px;
 }
-#wrapper .custom-auteddy-pill {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-pill {
 	display: inline-flex;
 	align-items: center;
 	padding: 6px 10px;
@@ -1112,28 +1115,28 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* cards */
-#wrapper .custom-auteddy-card {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card {
 	background: rgba(21, 21, 24, 0.85);
 	border: 1px solid var(--a-border);
 	border-radius: 12px;
 	padding: 12px 14px;
 	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
 }
-#wrapper .custom-auteddy-card-soft {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card-soft {
 	background: var(--a-surface);
 	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
-#wrapper .custom-auteddy-card-title {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card-title {
 	font-weight: 900;
 	margin-bottom: 6px;
 }
-#wrapper .custom-auteddy-card-text {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card-text {
 	color: var(--a-muted);
 	font-size: 13.5px;
 }
 
 /* quick specs */
-#wrapper .custom-auteddy-mini-label {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-mini-label {
 	font-weight: 900;
 	letter-spacing: 0.7px;
 	text-transform: uppercase;
@@ -1141,73 +1144,73 @@ ul.custom-dot-leader.custom-tree {
 	margin-bottom: 8px;
 	color: rgba(255, 255, 255, 0.82);
 }
-#wrapper .custom-auteddy-mini-list {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-mini-list {
 	margin: 0;
 	padding-left: 18px;
 	color: var(--a-muted);
 	font-size: 13px;
 }
-#wrapper .custom-auteddy-mini-list strong {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-mini-list strong {
 	color: var(--a-text);
 }
 
 /* 3-up features */
-#wrapper .custom-auteddy-grid3 {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-grid3 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 12px;
 	margin: 12px 0 16px;
 }
 @media (max-width: 860px) {
-	#wrapper .custom-auteddy-grid3 {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy-grid3 {
 		grid-template-columns: 1fr;
 	}
 }
 
 /* lists */
-#wrapper .custom-auteddy-list {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-list {
 	margin: 0;
 	padding-left: 18px;
 	color: var(--a-muted);
 }
-#wrapper .custom-auteddy-list strong {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-list strong {
 	color: var(--a-text);
 }
-#wrapper .custom-auteddy-list-nested ul {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-list-nested ul {
 	margin-top: 8px;
 	padding-left: 18px;
 }
 
 /* gallery grid */
-#wrapper .custom-auteddy-gallery {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-gallery {
 	display: grid;
 	gap: 12px;
 	margin-top: 10px;
 }
 
-#wrapper .custom-gallery-grid-1 {
+:is(#wrapper, .user_page_wrap) .custom-gallery-grid-1 {
 	grid-template-columns: var(--gallery-columns-1);
 }
 
-#wrapper .custom-gallery-grid-2 {
+:is(#wrapper, .user_page_wrap) .custom-gallery-grid-2 {
 	grid-template-columns: var(--gallery-columns-2);
 }
 
-#wrapper .custom-gallery-grid-3 {
+:is(#wrapper, .user_page_wrap) .custom-gallery-grid-3 {
 	grid-template-columns: var(--gallery-columns-3);
 }
 
-#wrapper .custom-gallery-grid-4 {
+:is(#wrapper, .user_page_wrap) .custom-gallery-grid-4 {
 	grid-template-columns: var(--gallery-columns-4);
 }
 
 @media (max-width: 980px) {
-	#wrapper .custom-auteddy-gallery {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy-gallery {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
-#wrapper .custom-auteddy-media {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-media {
 	border-radius: 16px;
 	border: 1px solid var(--a-border);
 	background: radial-gradient(circle at 30% 0%, var(--a-a14), transparent 48%), rgba(255, 255, 255, 0.03);
@@ -1217,12 +1220,12 @@ ul.custom-dot-leader.custom-tree {
 		border-color 0.15s ease,
 		box-shadow 0.15s ease;
 }
-#wrapper .custom-auteddy-media:hover {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-media:hover {
 	transform: translateY(-2px);
 	border-color: var(--a-a38);
 	box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
 }
-#wrapper .custom-auteddy-media img {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-media img {
 	width: 100%;
 	height: auto;
 	display: block;
@@ -1230,7 +1233,7 @@ ul.custom-dot-leader.custom-tree {
 	border: 1px solid rgba(255, 255, 255, 0.06);
 	background: rgba(0, 0, 0, 0.2);
 }
-#wrapper .custom-auteddy-caption {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-caption {
 	margin-top: 8px;
 	font-size: 12.5px;
 	color: var(--a-muted);
@@ -1240,15 +1243,15 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* helpers */
-#wrapper .custom-auteddy-muted {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-muted {
 	color: var(--a-muted);
 }
-#wrapper .custom-auteddy-note {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-note {
 	margin: 10px 0 0;
 	color: var(--a-muted);
 	font-size: 12.5px;
 }
-#wrapper .custom-auteddy-hr {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-hr {
 	border: 0;
 	height: 1px;
 	background: rgba(255, 255, 255, 0.1);
@@ -1256,12 +1259,12 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* links inside pack */
-#wrapper .custom-auteddy a {
+:is(#wrapper, .user_page_wrap) .custom-auteddy a {
 	color: var(--a-accent2);
 	text-decoration: none;
 	font-weight: 900;
 }
-#wrapper .custom-auteddy a:hover {
+:is(#wrapper, .user_page_wrap) .custom-auteddy a:hover {
 	text-decoration: underline;
 }
 
@@ -1271,7 +1274,7 @@ ul.custom-dot-leader.custom-tree {
    - Also supports .custom-auteddy-h3 (alias)
 ========================================================= */
 
-#wrapper :is(.custom-auteddy-card-request) {
+:is(#wrapper, .user_page_wrap) :is(.custom-auteddy-card-request) {
 	border: 1px solid var(--hud-power-request-accent_1) !important;
 
 	background:
@@ -1331,7 +1334,7 @@ ul.custom-dot-leader.custom-tree {
 	}
 }
 
-#wrapper :is(.custom-auteddy-card-licence) {
+:is(#wrapper, .user_page_wrap) :is(.custom-auteddy-card-licence) {
 	border: 1px solid var(--hud-power-licence-accent_1) !important;
 
 	background:
@@ -1399,7 +1402,7 @@ ul.custom-dot-leader.custom-tree {
 	}
 }
 
-#wrapper :is(.custom-hud-h, .custom-auteddy-h3, .custom-auteddy-text) {
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3, .custom-auteddy-text) {
 	position: relative;
 	margin: 10px 0px;
 	padding: 10px;
@@ -1442,7 +1445,7 @@ ul.custom-dot-leader.custom-tree {
 		0 0 28px var(--a-a10);
 }
 
-#wrapper :is(.custom-hud-h, .custom-auteddy-h3)::before {
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3)::before {
 	content: '';
 	position: absolute;
 	inset: -70px;
@@ -1464,7 +1467,7 @@ ul.custom-dot-leader.custom-tree {
 	animation: custom-hud-energy 10s linear infinite;
 }
 
-#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong {
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3) > strong {
 	position: relative;
 	z-index: 2;
 	display: inline-block;
@@ -1511,7 +1514,7 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* circuitry overlay (tinted by accent, masked by svg) */
-#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong::before {
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3) > strong::before {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -1531,7 +1534,7 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* notch detail */
-#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong::after {
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3) > strong::after {
 	content: '';
 	position: absolute;
 	right: 8px;
@@ -1545,7 +1548,7 @@ ul.custom-dot-leader.custom-tree {
 	pointer-events: none;
 }
 
-#wrapper :is(.custom-hud-h, .custom-auteddy-h3) > strong:hover {
+:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3) > strong:hover {
 	transform: translateY(-1px);
 	box-shadow:
 		0 18px 46px rgba(0, 0, 0, 0.55),
@@ -1562,7 +1565,7 @@ ul.custom-dot-leader.custom-tree {
 	}
 }
 @media (prefers-reduced-motion: reduce) {
-	#wrapper :is(.custom-hud-h, .custom-auteddy-h3)::before {
+	:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3)::before {
 		animation: none;
 	}
 }
@@ -1576,20 +1579,20 @@ ul.custom-dot-leader.custom-tree {
 ========================================================= */
 
 /* Callout title: keep it compact (avoid HUD headline panel) */
-#wrapper .custom-auteddy blockquote.custom-callout .custom-callout-title {
+:is(#wrapper, .user_page_wrap) .custom-auteddy blockquote.custom-callout .custom-callout-title {
 	margin: 0.25em 0 0.35em;
 	font-weight: 900;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	color: var(--a-accent2);
 }
-#wrapper .custom-auteddy blockquote.custom-callout .custom-callout-sub {
+:is(#wrapper, .user_page_wrap) .custom-auteddy blockquote.custom-callout .custom-callout-sub {
 	margin: 0;
 	color: var(--a-muted);
 }
 
 /* Tables inside the pack (your table is inside .custom-auteddy-card) */
-#wrapper .custom-auteddy table {
+:is(#wrapper, .user_page_wrap) .custom-auteddy table {
 	width: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -1597,7 +1600,7 @@ ul.custom-dot-leader.custom-tree {
 	border: none !important;
 	margin: 0;
 }
-#wrapper .custom-auteddy table thead th {
+:is(#wrapper, .user_page_wrap) .custom-auteddy table thead th {
 	text-align: left;
 	font-weight: 950;
 	text-transform: uppercase;
@@ -1609,62 +1612,62 @@ ul.custom-dot-leader.custom-tree {
 	border-bottom: 1px solid var(--a-border);
 	padding: 0.75em 0.9em;
 }
-#wrapper .custom-auteddy table td {
+:is(#wrapper, .user_page_wrap) .custom-auteddy table td {
 	padding: 0.7em 0.9em;
 	border-bottom: 1px solid var(--a-border);
 	color: var(--a-text);
 }
-#wrapper .custom-auteddy table tbody tr:nth-child(odd) td {
+:is(#wrapper, .user_page_wrap) .custom-auteddy table tbody tr:nth-child(odd) td {
 	background: rgba(255, 255, 255, 0.015);
 }
-#wrapper .custom-auteddy table tbody tr:hover td {
+:is(#wrapper, .user_page_wrap) .custom-auteddy table tbody tr:hover td {
 	background: var(--a-a10);
 }
 @media (max-width: 560px) {
-	#wrapper .custom-auteddy table {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy table {
 		font-size: 12.5px;
 	}
-	#wrapper .custom-auteddy table thead th {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy table thead th {
 		font-size: 11px;
 	}
-	#wrapper .custom-auteddy table td,
-	#wrapper .custom-auteddy table th {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy table td,
+	:is(#wrapper, .user_page_wrap) .custom-auteddy table th {
 		padding: 0.6em 0.7em;
 	}
 }
 
 /* If a table is inside a card, allow horizontal scroll on tiny screens */
 @media (max-width: 560px) {
-	#wrapper .custom-auteddy .custom-auteddy-card {
+	:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-card {
 		overflow-x: auto;
 	}
 }
 
 /* Gallery: make the whole tile clickable & remove default link styling */
-#wrapper .custom-auteddy .custom-auteddy-media a {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media a {
 	display: block;
 	text-decoration: none;
 	color: inherit;
 }
-#wrapper .custom-auteddy .custom-auteddy-media a:focus {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media a:focus {
 	outline: 2px solid var(--a-a38);
 	outline-offset: 3px;
 	border-radius: 12px;
 }
-#wrapper .custom-auteddy .custom-auteddy-media:hover img {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media:hover img {
 	border-color: var(--a-a38);
 }
 
 /* Tree inside pack: tint connectors to accent */
-#wrapper .custom-auteddy .custom-tree {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-tree {
 	--tree-outline-color: var(--a-a38);
 	color: var(--a-muted);
 }
-#wrapper .custom-auteddy .custom-tree li {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-tree li {
 	margin: 0.2em 0;
 }
-#wrapper .custom-auteddy .custom-tree li::before,
-#wrapper .custom-auteddy .custom-tree li::after {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-tree li::before,
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-tree li::after {
 	border-color: var(--a-a38) !important;
 	opacity: 0.9;
 }
@@ -1676,7 +1679,7 @@ ul.custom-dot-leader.custom-tree {
 ========================================================= */
 
 /* Shared HUD shape + layered background recipe */
-#wrapper .custom-auteddy {
+:is(#wrapper, .user_page_wrap) .custom-auteddy {
 	--custom-hud-shape: polygon(
 		12px 0%,
 		calc(100% - 18px) 0%,
@@ -1808,7 +1811,7 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Reusable utility class (optional) */
-#wrapper .custom-auteddy .custom-hud-panel {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-hud-panel {
 	position: relative;
 	overflow: hidden;
 
@@ -1825,7 +1828,9 @@ ul.custom-dot-leader.custom-tree {
 /* ---------- Apply HUD panel look to your main components ---------- */
 
 /* Cards + callout + gallery tiles get HUD panel treatment */
-#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media) {
+:is(#wrapper, .user_page_wrap)
+	.custom-auteddy
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media) {
 	position: relative;
 	overflow: hidden;
 
@@ -1841,7 +1846,7 @@ ul.custom-dot-leader.custom-tree {
 	box-shadow: var(--custom-hud-shadow);
 }
 
-#wrapper .custom-auteddy :is(.custom-auteddy-media) {
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(.custom-auteddy-media) {
 	position: relative;
 	overflow: hidden;
 
@@ -1859,20 +1864,25 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Keep content above energy layer */
-#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media) > * {
+:is(#wrapper, .user_page_wrap)
+	.custom-auteddy
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)
+	> * {
 	position: relative;
 	z-index: 2;
 }
 
 /* Callout becomes a proper HUD card (override pitch.css default) */
-#wrapper .custom-auteddy blockquote.custom-callout {
+:is(#wrapper, .user_page_wrap) .custom-auteddy blockquote.custom-callout {
 	margin: 14px 0 16px;
 	padding: 12px 14px 14px;
 	border-left: 1px solid var(--a-border); /* disable heavy left stripe */
 }
 
 /* Accent edge: subtle neon line on the left */
-#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::after {
+:is(#wrapper, .user_page_wrap)
+	.custom-auteddy
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -1889,7 +1899,9 @@ ul.custom-dot-leader.custom-tree {
 /* Animated energy layer:
    - Always on for .custom-auteddy-card-soft + callouts
    - Hover-trigger for other cards/media */
-#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
+:is(#wrapper, .user_page_wrap)
+	.custom-auteddy
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
 	content: '';
 	position: absolute;
 	inset: -70px;
@@ -1913,24 +1925,26 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Always-on for the important panels */
-#wrapper .custom-auteddy :is(.custom-auteddy-card-soft, blockquote.custom-callout)::before {
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(.custom-auteddy-card-soft, blockquote.custom-callout)::before {
 	opacity: 0.32;
 }
 
 /* Hover glow for interactive pieces */
-#wrapper .custom-auteddy :is(.custom-auteddy-card:hover, .custom-auteddy-media:hover)::before {
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(.custom-auteddy-card:hover, .custom-auteddy-media:hover)::before {
 	opacity: 0.28;
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-	#wrapper .custom-auteddy :is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
+	:is(#wrapper, .user_page_wrap)
+		.custom-auteddy
+		:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
 		animation: none;
 	}
 }
 
 /* ---------- Pills: small HUD chips ---------- */
-#wrapper .custom-auteddy .custom-auteddy-pill {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-pill {
 	position: relative;
 	overflow: hidden;
 	border-radius: 5px;
@@ -1938,32 +1952,32 @@ ul.custom-dot-leader.custom-tree {
 	background: color-mix(in srgb, var(--itchio_header_color), transparent 65%);
 }
 
-#wrapper .custom-auteddy .custom-auteddy-pill:hover {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-pill:hover {
 	border-color: var(--a-a38);
 	box-shadow: 0 0 18px var(--a-a14);
 }
 
 /* ---------- Tables: match HUD look ---------- */
-#wrapper .custom-auteddy .custom-auteddy-card table {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-card table {
 	background: transparent;
 }
 
-#wrapper .custom-auteddy .custom-auteddy-card table thead th {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-card table thead th {
 	border-bottom: 1px solid var(--a-border) !important;
 }
 
-#wrapper .custom-auteddy .custom-auteddy-card table td {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-card table td {
 	border-bottom: 1px solid var(--a-border) !important;
 }
 
 /* ---------- Gallery: make tiles feel like panels ---------- */
-#wrapper .custom-auteddy .custom-auteddy-media {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media {
 	transition:
 		transform 0.15s ease,
 		box-shadow 0.15s ease,
 		border-color 0.15s ease;
 }
-#wrapper .custom-auteddy .custom-auteddy-media:hover {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media:hover {
 	transform: translateY(-2px);
 	border-color: var(--a-a38);
 	box-shadow:
@@ -1973,12 +1987,12 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Make the image background also “HUD-ish” */
-#wrapper .custom-auteddy .custom-auteddy-media img {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media img {
 	background: radial-gradient(circle at 20% 0%, var(--a-a10), transparent 55%), rgba(0, 0, 0, 0.18);
 }
 
 /* ---------- HR: accent scanline ---------- */
-#wrapper .custom-auteddy .custom-auteddy-hr {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-hr {
 	height: 2px;
 	border-radius: 999px;
 	background: linear-gradient(90deg, var(--a-a70), var(--a-a18) 35%, var(--a-a70) 70%, transparent);
@@ -1986,20 +2000,20 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* ---------- Optional: pitch utilities inside your pack also become HUD ---------- */
-#wrapper .custom-auteddy :is(.custom-accrd, .custom-code) {
+:is(#wrapper, .user_page_wrap) .custom-auteddy :is(.custom-accrd, .custom-code) {
 	border-radius: 16px;
 	border-color: var(--itchio_button_color) !important;
 	box-shadow: var(--custom-hud-shadow);
 }
 
-#wrapper .custom-auteddy .custom-accrd {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-accrd {
 	clip-path: var(--custom-hud-shape);
 	background:
 		var(--custom-hud-layer-gloss-accordion), var(--custom-hud-layer-scan-accordion),
 		var(--custom-hud-layer-grid-accordion), var(--a-surface);
 }
 
-#wrapper .custom-auteddy .custom-code {
+:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-code {
 	background:
 		var(--custom-hud-layer-gloss), var(--custom-hud-layer-scan), var(--custom-hud-layer-grid), rgba(12, 12, 16, 0.6);
 }
@@ -2015,18 +2029,18 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* =========================================
-   #wrapper background: Isometric grid + ortho lines
+   :is(#wrapper, .user_page_wrap) background: Isometric grid + ortho lines
    - isometric: 30° + 150° diagonals
    - extra: vertical + horizontal lines
    - animated glow layer (subtle)
 ========================================= */
 
-#wrapper {
+:is(#wrapper, .user_page_wrap) {
 	position: relative;
 }
 
 /* Grid layer */
-#wrapper::before {
+:is(#wrapper, .user_page_wrap)::before {
 	content: '';
 	position: fixed;
 	inset: 0;
@@ -2063,7 +2077,7 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Glow layer (moving, very subtle) */
-#wrapper::after {
+:is(#wrapper, .user_page_wrap)::after {
 	content: '';
 	position: fixed;
 	inset: -40%;
@@ -2096,14 +2110,14 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Keep page content above the background */
-#wrapper > * {
+:is(#wrapper, .user_page_wrap) > * {
 	position: relative;
 	z-index: 1;
 }
 
 /* If browser supports color-mix, tint the grid by theme color */
 @supports (color: color-mix(in srgb, #000, #fff)) {
-	#wrapper::before {
+	:is(#wrapper, .user_page_wrap)::before {
 		--grid-vh: color-mix(in srgb, #fff 6%, transparent);
 		--iso-soft: color-mix(in srgb, var(--itchio_header_color) 14%, transparent);
 		--iso-strong: color-mix(in srgb, var(--itchio_header_color) 22%, transparent);
