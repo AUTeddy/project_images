@@ -1116,7 +1116,8 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* cards */
-:is(#wrapper, .user_page_wrap) .custom-auteddy-card {
+:is(#wrapper, .user_page_wrap) .custom-auteddy-card,
+:is(.user_page_wrap) .game_grid_widget :is(.game_cell) {
 	background: rgba(21, 21, 24, 0.85);
 	border: 1px solid var(--a-border);
 	border-radius: 12px;
@@ -1680,7 +1681,8 @@ ul.custom-dot-leader.custom-tree {
 ========================================================= */
 
 /* Shared HUD shape + layered background recipe */
-:is(#wrapper, .user_page_wrap) .custom-auteddy {
+:is(#wrapper, .user_page_wrap) .custom-auteddy,
+:is(.user_page_wrap) .game_grid_widget :is(.game_cell) {
 	--custom-hud-shape: polygon(
 		12px 0%,
 		calc(100% - 18px) 0%,
@@ -1831,7 +1833,8 @@ ul.custom-dot-leader.custom-tree {
 /* Cards + callout + gallery tiles get HUD panel treatment */
 :is(#wrapper, .user_page_wrap)
 	.custom-auteddy
-	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media) {
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media),
+:is(.user_page_wrap) .game_grid_widget :is(.game_cell) {
 	position: relative;
 	overflow: hidden;
 
@@ -1867,8 +1870,8 @@ ul.custom-dot-leader.custom-tree {
 /* Keep content above energy layer */
 :is(#wrapper, .user_page_wrap)
 	.custom-auteddy
-	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)
-	> * {
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media),
+:is(.user_page_wrap) .game_grid_widget :is(.game_cell) > * {
 	position: relative;
 	z-index: 2;
 }
@@ -1883,7 +1886,8 @@ ul.custom-dot-leader.custom-tree {
 /* Accent edge: subtle neon line on the left */
 :is(#wrapper, .user_page_wrap)
 	.custom-auteddy
-	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::after {
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::after,
+:is(.user_page_wrap) .game_grid_widget :is(.game_cell)::after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -1898,11 +1902,12 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Animated energy layer:
-   - Always on for .custom-auteddy-card-soft + callouts
-   - Hover-trigger for other cards/media */
+	- Always on for .custom-auteddy-card-soft + callouts
+	- Hover-trigger for other cards/media */
 :is(#wrapper, .user_page_wrap)
 	.custom-auteddy
-	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
+	:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before,
+:is(.user_page_wrap) .game_grid_widget :is(.game_cell)::before {
 	content: '';
 	position: absolute;
 	inset: -70px;
@@ -1939,7 +1944,8 @@ ul.custom-dot-leader.custom-tree {
 @media (prefers-reduced-motion: reduce) {
 	:is(#wrapper, .user_page_wrap)
 		.custom-auteddy
-		:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before {
+		:is(.custom-auteddy-card, blockquote.custom-callout, .custom-auteddy-media)::before,
+	:is(.user_page_wrap) .game_grid_widget :is(.game_cell)::before {
 		animation: none;
 	}
 }
