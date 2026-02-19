@@ -294,10 +294,17 @@ a.custom-lb {
 	padding: 0.75em 1.2em;
 	margin: 0;
 }
+
+.custom-accrd > details {
+	background-color: color-mix(in srgb, var(--itchio_button_color) 50%, transparent);
+}
+
+.custom-accrd > details[open] {
+	background-color: color-mix(in srgb, rgba(0, 0, 0, 1) 50%, transparent);
+}
+
 .custom-accrd > details[open] summary {
 	margin-bottom: 0.25em;
-	color: var(--itchio_header_color, var(--l));
-	background-color: color-mix(in srgb, var(--itchio_button_color) 0%, rgba(255, 255, 255, 0));
 }
 .custom-accrd > details[open] summary:after {
 	content: var(--accrd-opn, '▼');
@@ -317,9 +324,9 @@ a.custom-lb {
 	cursor: pointer;
 	display: flex;
 	text-decoration: none;
-	color: var(--itchio_link_color, var(--l));
-	background-color: color-mix(in srgb, var(--itchio_button_color) 0%, rgba(255, 255, 255, 0));
-	padding: 10px;
+	color: rgba(255, 255, 255, 1);
+	background-color: transparent;
+	padding: 5px;
 }
 .custom-accrd summary:not(:hover) {
 	text-decoration: none;
@@ -1083,6 +1090,10 @@ ul.custom-dot-leader.custom-tree {
 		padding: 15px;
 		margin: 0;
 	}
+
+	> p:last-of-type {
+		padding: 15px 15px 0 15px;
+	}
 }
 
 :is(#wrapper, .user_page_wrap) .custom-auteddy-title {
@@ -1223,11 +1234,11 @@ ul.custom-dot-leader.custom-tree {
 		border-color 0.15s ease,
 		box-shadow 0.15s ease;
 }
-:is(#wrapper, .user_page_wrap) .custom-auteddy-media:hover {
+/* :is(#wrapper, .user_page_wrap) .custom-auteddy-media:hover {
 	transform: translateY(-2px);
 	border-color: var(--a-a38);
 	box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
-}
+} */
 :is(#wrapper, .user_page_wrap) .custom-auteddy-media img {
 	width: 100%;
 	height: auto;
@@ -1551,13 +1562,13 @@ ul.custom-dot-leader.custom-tree {
 	pointer-events: none;
 }
 
-:is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3) > strong:hover {
+/* :is(#wrapper, .user_page_wrap) :is(.custom-hud-h, .custom-auteddy-h3) > strong:hover {
 	transform: translateY(-1px);
 	box-shadow:
 		0 18px 46px rgba(0, 0, 0, 0.55),
 		0 0 0 1px rgba(255, 255, 255, 0.05) inset,
 		0 0 30px var(--a-a18);
-}
+} */
 
 @keyframes custom-hud-energy {
 	0% {
@@ -1937,9 +1948,9 @@ ul.custom-dot-leader.custom-tree {
 }
 
 /* Hover glow for interactive pieces */
-:is(#wrapper, .user_page_wrap) .custom-auteddy :is(.custom-auteddy-card:hover, .custom-auteddy-media:hover)::before {
+/* :is(#wrapper, .user_page_wrap) .custom-auteddy :is(.custom-auteddy-card:hover, .custom-auteddy-media:hover)::before {
 	opacity: 0.28;
-}
+} */
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -1985,14 +1996,14 @@ ul.custom-dot-leader.custom-tree {
 		box-shadow 0.15s ease,
 		border-color 0.15s ease;
 }
-:is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media:hover {
+/* :is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media:hover {
 	transform: translateY(-2px);
 	border-color: var(--a-a38);
 	box-shadow:
 		0 22px 55px rgba(0, 0, 0, 0.5),
 		0 0 0 1px rgba(255, 255, 255, 0.05) inset,
 		0 0 34px var(--a-a14);
-}
+} */
 
 /* Make the image background also “HUD-ish” */
 :is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-media img {
@@ -2124,9 +2135,9 @@ ul.custom-dot-leader.custom-tree {
 
 /* 3 picker-friendly rgba() vars (override anywhere) */
 :is(#wrapper, .user_page_wrap) {
-	--auteddy_dot_color: rgba(0, 221, 255, 0.95);
-	--auteddy_pulse1_color: rgb(255, 0, 187);
-	--auteddy_pulse2_color: rgb(255, 255, 0);
+	--auteddy_dot_color: rgba(0, 255, 213, 0.268);
+	--auteddy_pulse1_color: rgb(0, 170, 255);
+	--auteddy_pulse2_color: rgb(0, 255, 72);
 }
 
 /* optional: animate custom props smoothly (Chromium/modern) */
@@ -2163,15 +2174,15 @@ ul.custom-dot-leader.custom-tree {
 	mix-blend-mode: screen;
 
 	/* pulse state */
-	--p1: 250px;
-	--p2: 500px;
+	--p1: 50px;
+	--p2: 50px;
 	--a1: 0%;
 	--a2: 0%;
 
 	/* DOTS (2 layers) + PULSE RINGS (2 lifetimes) */
 	background-image:
     /* dots main */
-		radial-gradient(circle, var(--auteddy_dot_color) 0 1.6px, transparent 2.9px),
+		radial-gradient(circle, var(--auteddy_dot_color) 1.6px 1.6px, transparent 3.9px),
 		/* dots soft */
 		radial-gradient(
 				circle,
