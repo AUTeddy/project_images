@@ -1091,9 +1091,9 @@ ul.custom-dot-leader.custom-tree {
 		margin: 0;
 	}
 
-	> p:last-of-type {
+	/* > p:last-of-type {
 		padding: 15px 15px 0 15px;
-	}
+	} */
 }
 
 :is(#wrapper, .user_page_wrap) .custom-auteddy-title {
@@ -1269,7 +1269,7 @@ ul.custom-dot-leader.custom-tree {
 	border: 0;
 	height: 1px;
 	background: rgba(255, 255, 255, 0.1);
-	margin: 18px 0;
+	margin: 20px 0;
 }
 
 /* links inside pack */
@@ -1493,7 +1493,7 @@ ul.custom-dot-leader.custom-tree {
 	letter-spacing: 0.18em;
 	font-size: 13px;
 	line-height: 1;
-	color: var(--hud-text);
+	color: var(--a-text);
 
 	clip-path: polygon(
 		10px 0%,
@@ -2012,10 +2012,11 @@ ul.custom-dot-leader.custom-tree {
 
 /* ---------- HR: accent scanline ---------- */
 :is(#wrapper, .user_page_wrap) .custom-auteddy .custom-auteddy-hr {
-	height: 2px;
+	height: 1px;
 	border-radius: 999px;
-	background: linear-gradient(90deg, var(--a-a70), var(--a-a18) 35%, var(--a-a70) 70%, transparent);
+	background: linear-gradient(90deg, transparent, var(--a-a70), var(--a-a18) 35%, var(--a-a70) 70%, transparent);
 	box-shadow: 0 0 18px var(--a-a14);
+	opacity: 0.65;
 }
 
 /* ---------- Optional: pitch utilities inside your pack also become HUD ---------- */
